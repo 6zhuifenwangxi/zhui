@@ -5,7 +5,6 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use Symfony\Component\HttpFoundation\Session\Session;
 class PublicController extends Controller
 {
     public function login(){
@@ -18,14 +17,12 @@ class PublicController extends Controller
     		'password'  =>  'required|min:6',
     	]);
     	$data = $request -> only(['username','password']);
-    	$user = DB::table('user')->where('name', $data['username'])->first();
-    	if ($user) {
-    		$session = new Session;
-    		$session->set('user',$user);
-    		var_dump($session->get('user'));
+    	$user = DB::table('admin')->where('username', $data['username'])->first(); 	
+    	if ($user->userpwd == md5($data['password'])) {
+    		$request -> session() ->put('user',$user);
     		return redirect(route('index.index'));
-    	}else{
-    		return redirect(route('login'))->withErrors(['error'=>'用户名或密码错误']);
+    	}else{  		
+    		return redirect(route('admin.public.index'))->withErrors(['error'=>'用户名或密码错误']);
     	}
     }
 }
