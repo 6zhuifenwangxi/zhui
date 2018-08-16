@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('./hellow',function(){
+    return "你好啊";
+});
