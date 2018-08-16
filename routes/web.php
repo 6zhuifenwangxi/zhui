@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('admin/public/login','admin\PublicController@login')->name('admin.public.index');
+Route::post('admin/public/check','admin\PublicController@check')->name('admin.check.login');
+Route::group(['prefix' => 'admin','namespance' =>'admin','middleware'=>'login'], function () {
+    
 });
