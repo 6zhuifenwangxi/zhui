@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin/public/login','admin\PublicController@login')->name('admin.public.index');
+Route::any('admin/public/login','admin\PublicController@login')->name('admin.public.index');
 Route::post('admin/public/check','admin\PublicController@check')->name('admin.check.login');
 Route::group(['prefix' => 'admin','namespace' =>'admin'], function () { 
     Route::get('index/index','IndexController@index')->name('index.index');
     Route::get('index/welcome','IndexController@welcome')->name('index.welcome');
-
 });
