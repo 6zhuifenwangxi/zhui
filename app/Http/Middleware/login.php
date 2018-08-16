@@ -15,8 +15,7 @@ class login
      */
     public function handle($request, Closure $next)
     {
-        $user =Auth::guard('admin')->user();
-        if(empty($user)){
+        if(!$request->session()->has('user')){
             return redirect(route('admin.public.index'))->withErrors(['error'=>'请登录']);
         }
         //dd(empty(Auth::guard('admin')->user()));
