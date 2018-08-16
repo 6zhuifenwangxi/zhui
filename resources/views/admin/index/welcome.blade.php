@@ -18,7 +18,6 @@
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
-
 <body class="gray-bg">
     <div class="wrapper wrapper-content">
         <div class="row">
