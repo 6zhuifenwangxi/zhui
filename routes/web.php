@@ -16,4 +16,8 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::get('index/index','IndexController@index')->name('index.index');
     Route::get('index/welcome','IndexController@welcome')->name('index.welcome');
     Route::get('public/logout','PublicController@check')->name('public.logout');
+    Route::get('athletes/index','AthletesController@index')->name('athletes.index');
+    Route::any('athletes/add','AthletesController@add')->name('athletes.add');
+    Route::get('math/index','MathController@index')->name('math.index');
+    Route::any('math/add','MathController@add')->name('math.add');
 });
