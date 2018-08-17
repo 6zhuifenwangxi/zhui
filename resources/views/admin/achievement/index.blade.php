@@ -53,15 +53,15 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>比赛名称</th>
-                                    <th>比赛日期</th>
                                     <th>比赛时间</th>
+                                    <th>比赛名称</th>
+                                    <th>比赛项目</th>
                                     <th>比赛阶段</th>
                                     <th>运动员A</th>
                                     <th>运动员B</th>
-                                    <th>比赛项目</th>
-                                    <th>比赛国家</th>
-                                    <th>比赛城市</th>
+                                    <th>大比分</th>
+                                    <th class="center" width="80">小比分</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -69,17 +69,24 @@
                                 @foreach ($date as $item)
                                     <tr class="gradeX">
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->game_name}} </td>
-                                    <td>{{$item->game_date}}</td>
-                                    <td>{{$item->game_time}}</td>
-                                    <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a->user_name}}</td>
-                                    <td>{{$item->rel_b->user_name}}</td>
-                                    <td>{{$item->game_project}}</td>
-                                    <td>{{$item->state}}</td>
-                                    <td>{{$item->city}}</td>
+                                    <td>{{$item->rel_id->game_date}} </td>
+                                    <td>{{$item->rel_id->game_name}}</td>
+                                    <td>{{$item->rel_id->game_project}}</td>
+                                    <td>{{$item->rel_id->game_stage}}</td>
+                                    <td>{{$item->rel_id->rel_a->user_name}}</td>
+                                    <td>{{$item->rel_id->rel_b->user_name}}</td>
+                                    <td>{{$item->big}}</td>
+                                    <td>{{$item->small}}</td>
                                     <td>
-                                    <span ><a href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
+                                        @if ($item->rel_id->show =='1')
+                                            已上线
+                                        @else
+                                            未上线
+                                        @endif
+                                        
+                                    </td>
+                                    <td>
+                                    <span ><a href="javascript:;" >编辑</a></span>
                                     <span><a href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
                                     </td>
                                 </tr>
@@ -109,8 +116,7 @@
     <!-- 自定义js -->
     <script src="/admin/js/content.js?v=1.0.0"></script>
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
-    <script src="/admin/js/H-ui.js"></script>
-    <script src="/admin/js/H-ui.admin.js"></script>
+
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
@@ -162,9 +168,6 @@
                     layer.alert(data.msg);
                 }
             },'json')
-        }
-        function edit(title,url,id,w,h){
-            layer_show(title,url+'?id='+id,w,h);
         }
             @if(count($errors)>0)
               var err ='';

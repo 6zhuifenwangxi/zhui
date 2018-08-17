@@ -28,5 +28,26 @@ class MathController extends Controller
         }else{
             return redirect(route('math.index'))->withErrors(['error'=>'添加失败']);
         }
+        
+    }
+    public function dlt(){
+        $id =Input::get('id');
+        if(Message::where('id',$id)->delete()){
+            $response =['code'=> '0','msg'=>'删除成功！'];
+        }else{
+            $response =['code'=> '0','msg'=>'删除失败！'];
+        }
+        return response()->json($response);
+    }
+    public function edit(){
+        $id =Input::get('id');
+        if(Input::method()=="GET"){
+            $name =DB::table('user')->get();
+            $stage =Message::get();
+            $info =Message::where('id',$id)->first()->get();
+            return view('admin.math.add',compact('name','stage','info'));
+        }else{
+
+        }
     }
 }

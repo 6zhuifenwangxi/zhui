@@ -40,19 +40,19 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛名称：</label>
                                 <div class="col-sm-4">
-                                    <input id="cname" name="game_name" minlength="2" type="text" class="form-control" placeholder="请输入比赛名称" aria-required="true">
+                                <input id="cname" value="{{ $info->game_name }}" name="game_nam" minlength="2" type="text" class="form-control" placeholder="请输入比赛名称" aria-required="true" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛日期：</label>
                                 <div class="col-sm-4">
-                                    <input id="cemail" type="date" class="form-control" name="game_date" required="" aria-required="true">
+                                <input id="cemail" value="{{ $info->game_date}}" type="date" class="form-control" name="game_date" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛时间：</label>
                                 <div class="col-sm-4">
-                                    <input id="curl" type="time" class="form-control" name="game_time">
+                                <input id="curl" value="{{ $info->game_time}}" type="time" class="form-control" name="game_time">
                                 </div>
                             </div>
                              <div class="form-group">
@@ -61,7 +61,11 @@
                                     <select name="game_stage" id="" class="form-control">
                                         <option selected>请选择</option>
                                         @foreach ($stage as $item)
+                                            @if ($item->game_stage ==$info->game_stage)
+                                            <option value="{{ $item->game_stage}}" selected>{{ $item->game_stage}}</option>
+                                            @else
                                             <option value="{{ $item->game_stage}}">{{ $item->game_stage}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,7 +76,12 @@
                                         <select name="user_a" id="" class="form-control">
                                             <option value="">请选择</option>
                                             @foreach ($name as $item)
-                                            <option value="{{ $item->id}}">{{ $item->user_name}}</option>
+                                                @if ($item->user_name ==$info->rel_a->user_name)
+                                                    <option selected value="{{ $item->id}}">{{ $item->user_name}}</option>
+                                                @else
+                                                    <option  value="{{ $item->id}}">{{ $item->user_name}}</option>
+                                                @endif
+                                            
                                             @endforeach
                                         </select>
                                     </div>
@@ -83,8 +92,13 @@
                                             <select name="user_b" id="" class="form-control">
                                                 <option value="">请选择</option>
                                                 @foreach ($name as $item)
-                                                    <option value="{{ $item->id}}">{{ $item->user_name}}</option>
-                                                @endforeach
+                                                @if ($item->user_name ==$info->rel_b->user_name)
+                                                    <option selected value="{{ $item->id}}">{{ $item->user_name}}</option>
+                                                @else
+                                                    <option  value="{{ $item->id}}">{{ $item->user_name}}</option>
+                                                @endif
+                                            
+                                            @endforeach
                                             </select>
                                         </div>
                                 </div>
@@ -93,21 +107,28 @@
                                 <div class="col-sm-4">
                                     <select name="game_project" id="" class="form-control">
                                         <option value="">请选择</option>
-                                        <option value="男单">男单</option>
+                                        @if ($info->game_project =='男单')
+                                        <option selected value="男单">男单</option>
                                         <option value="女单">女单</option>
+                                        @else
+                                        <option  value="男单">男单</option>
+                                        <option selected value="女单">女单</option>
+                                        @endif
+                                        
+                                        
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛国家：</label>
                                 <div class="col-sm-4">
-                                    <input id="cemail" type="text" class="form-control" name="state" placeholder='请输入比赛国家'' required="" aria-required="true">
+                                <input id="cemail" type="text" value="{{$info->state}}" class="form-control" name="state" placeholder='请输入比赛国家'' required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛城市：</label>
                                 <div class="col-sm-4">
-                                    <input id="cemail" type="text" class="form-control" name="city" placeholder="请输入比赛城市" required="" aria-required="true">
+                                <input id="cemail" value="{{ $info->city}}" type="text" class="form-control" name="city" placeholder="请输入比赛城市" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="zuo">
