@@ -28,7 +28,8 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     //成绩管理模块
     Route::get('achievement/index','AchievementController@index')->name('achievement.index');
     Route::any('achievement/add','AchievementController@add')->name('achievement.add');
-    
+    //比赛数据管理
+    Route::get('Mdata/index','MdataController@index')->name('Mdata.index');
     //管理员列表
     Route::get('admin/index','AdminController@index')->name('admin.index');
     //添加管理员
