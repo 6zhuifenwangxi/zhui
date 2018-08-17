@@ -172,6 +172,7 @@
 
     <!-- 第三方插件 -->
     <script src="/admin/js/plugins/pace/pace.min.js"></script>
+    <script src="/admin/js/plugins/layer/layer.min.js"></script>
 <div style="text-align:center;">
 <p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
 </div>
