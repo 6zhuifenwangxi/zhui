@@ -19,7 +19,14 @@
 
     <link href="/admin/css//animate.css" rel="stylesheet">
     <link href="/admin/css//style.css?v=4.1.0" rel="stylesheet">
-
+    <style>
+        .shang{
+            background: green;
+        }
+        .xia{
+            background: orange;
+        }
+    </style>
 </head>
 
 <body class="gray-bg">
@@ -86,8 +93,8 @@
                                         
                                     </td>
                                     <td>
-                                    <span ><a href="javascript:;" >编辑</a></span>
-                                    <span><a href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
+                                    <span class="shang"><a href="javascript:;" >上线</a></span>
+                                    <span class="xia"><a href="javascript:;" onclick="dlt('{{$item->id}}')">下线</a></span>
                                     </td>
                                 </tr>
                                 @endforeach

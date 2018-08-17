@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛名称：</label>
                                 <div class="col-sm-4">
-                                <input id="cname" value="{{ $info->game_name }}" name="game_nam" minlength="2" type="text" class="form-control" placeholder="请输入比赛名称" aria-required="true" >
+                                <input id="cname" value="{{ $info->game_name }}" name="game_name" minlength="2" type="text" class="form-control" placeholder="请输入比赛名称" aria-required="true" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -176,5 +176,16 @@
     
 
 </body>
-
+<script>
+    $(function(){
+        $('#btn').click(function(){
+           setTimeout(function(){
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.location.href = parent.location.href;
+                parent.layer.close(index);
+           },1000)
+            
+        })
+    })
+</script>
 </html>

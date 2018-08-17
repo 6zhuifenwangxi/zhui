@@ -44,10 +44,19 @@ class MathController extends Controller
         if(Input::method()=="GET"){
             $name =DB::table('user')->get();
             $stage =Message::get();
-            $info =Message::where('id',$id)->first()->get();
-            return view('admin.math.add',compact('name','stage','info'));
+            $info =Message::where('id',$id)->first();
+            return view('admin.math.edit',compact('name','stage','info'));
         }else{
-
+            
+            $date =Input::all();
+            unset($date['_token']);
+            $date['add_time'] =date('Y-m-d h:i:s',time());
+            if(Message::where('id',$id)->update($date)){
+                sleep(1);
+            return redirect(route('math.index'))->withErrors(['error'=>'修改成功']);
+        } else{
+            return redirect(route('math.index'))->withErrors(['error'=>'修改失败']);
+        }
         }
     }
 }
