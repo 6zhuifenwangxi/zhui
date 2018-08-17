@@ -75,10 +75,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">赛事列表</a>
+                            <a class="J_menuItem" href="{{ route('math.index')}}">赛事列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">添加赛事</a>
+                            <a class="J_menuItem" href="{{ route('math.add')}}">添加赛事</a>
                             </li>
                         </ul>
                     <li>
