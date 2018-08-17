@@ -21,7 +21,7 @@ class PublicController extends Controller
     	if ($user->userpwd == md5($data['password'])) {
     		$request -> session() ->put('user',$user);
     		return redirect(route('index.index'));
-    	}else{  		
+    	}else{
     		return redirect(route('admin.public.index'))->withErrors(['error'=>'用户名或密码错误']);
     	}
     }

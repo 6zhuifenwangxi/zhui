@@ -55,7 +55,7 @@
                     <li>
                         <a href="#">
                             <i class="fa fa fa-users"></i>
-                            <span class="nav-label">人员管理</span>
+                            <span class="nav-label">运动员管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -81,7 +81,41 @@
                             <a class="J_menuItem" href="{{ route('math.add')}}">添加赛事</a>
                             </li>
                         </ul>
+                    </li>
                     <li>
+                        <a href="#">
+                            <i class="fa fa fa-database"></i>
+                            <span class="nav-label">比赛数据管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="graph_echarts.html">比赛数据列表</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="graph_flot.html">比赛数据添加</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="graph_flot.html">比赛数据批量上传</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cubes"></i>
+                            <span class="nav-label">比赛成绩管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="graph_echarts.html">比赛成绩列表</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="graph_flot.html">比赛数据添加</a>
+                            </li>
+                        </ul>
+                    </li>
+                       <li>
                         <a href="#">
                             <i class="fa fa fa-user"></i>
                             <span class="nav-label">管理员管理</span>
