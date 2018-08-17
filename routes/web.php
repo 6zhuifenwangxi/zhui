@@ -20,10 +20,20 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::get('athletes/index','AthletesController@index')->name('athletes.index');
     //添加运动员
     Route::any('athletes/add','AthletesController@add')->name('athletes.add');
+<<<<<<< HEAD
     //修改运动员信息
     Route::any('athletes/edit','AthletesController@edit')->name('athletes.edit');
+=======
+    //赛事管理模块
+>>>>>>> fb873d9e3b5dead6195819ba42905e6aaabbd6d8
     Route::get('math/index','MathController@index')->name('math.index');
     Route::any('math/add','MathController@add')->name('math.add');
+    Route::get('math/dlt','MathController@dlt')->name('math.dlt');
+    Route::any('math/edit','MathController@edit')->name('math.edit');
+    //成绩管理模块
+    Route::get('achievement/index','AchievementController@index')->name('achievement.index');
+    Route::any('achievement/add','AchievementController@add')->name('achievement.add');
+    
     //管理员列表
     Route::get('admin/index','AdminController@index')->name('admin.index');
     //添加管理员
