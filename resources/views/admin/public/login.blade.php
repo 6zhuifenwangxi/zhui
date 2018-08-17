@@ -52,7 +52,16 @@
     <!-- 全局js -->
     <script src="/admin/js/jquery.min.js?v=2.1.4"></script>
     <script src="/admin/js/bootstrap.min.js?v=3.3.6"></script>
-
+    <script src="/admin/js/plugins/layer/layer.min.js"></script>
+    <script>
+        @if(count($errors)>0)
+          var err ='';
+        @foreach($errors->all() as $error)
+          err +="{{$error}}<br/>";
+        @endforeach
+          layer.alert(err);
+      @endif
+    </script>
     
     
 
