@@ -32,20 +32,13 @@
                        
                     </div>
                     <div class="ibox-content">
-
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
                                     <th>编号</th>
-                                    <th>姓名</th>
-                                    <th>性别</th>
-                                    <th>年龄</th>
-                                    <th>国家</th>
-                                    <th>执排手</th>
-                                    <th>拿排方式</th>
-                                    <th>打法</th>
-                                    <th>头像</th>
-                                    <th>添加时间</th>
+                                    <th>用户名</th>
+                                    <th>状态</th>
+                                    <th>创建时间</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -53,18 +46,12 @@
                                 @foreach($data as $val)
                    				 <tr>
                                     <td>{{ $val -> id }}</td>
-                                    <td>{{ $val -> user_name }}</td>
-                                    <td>{{ $val -> sex }}</td>
-                                    <td>{{ $val -> age }}</td>
-                                    <td>{{ $val -> state }}</td>
-                                    <td>{{ $val -> hand }}</td>
-                                    <td>{{ $val -> bat }}</td>
-                                    <td>{{ $val -> play }}</td>
-                                    <td><img class="center-block" width='80px' src="{{ $val -> image }}"></td>
-                                    <td>{{ $val -> add_time }}</td>
-                                     <td> 
-                                    	<a href='{{route("athletes.edit")}}?id={{$val->id}}' class="btn btn-outline btn-info">修改</a>
-                                    	<a href='' class="btn btn-outline btn-danger">删除</a>
+                                    <td>{{ $val -> username }}</td>
+                                    <td>{{ $val -> show }}</td>
+                                    <td>{{ date('Y-m-d H:i:s',$val -> add_time) }}</td>
+                                    <td> 
+                                    	<a href='' class="btn btn-outline btn-info">修改</a>
+                                    	<a href='{{route("admin.del")}}?id={{$val -> id}}' class="btn btn-outline btn-danger" date-val="{{$val ->id}}">删除</a>
                                     </td>
                                  </tr>
                                 @endforeach
@@ -90,7 +77,15 @@
 
     <!-- 自定义js -->
     <script src="/admin/js/content.js?v=1.0.0"></script>
-
+    <script> 
+    	jQuery(document).ready(function($) {
+    		$('.btn').click(function(event) {
+    			if (!confirm("确认删除吗?")) {
+    				event.preventDefault();	
+    			}
+    		});
+    	});
+    </script>
 
     <!-- Page-Level Scripts -->
     <script>

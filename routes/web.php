@@ -20,10 +20,16 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::get('athletes/index','AthletesController@index')->name('athletes.index');
     //添加运动员
     Route::any('athletes/add','AthletesController@add')->name('athletes.add');
+    //修改运动员信息
+    Route::any('athletes/edit','AthletesController@edit')->name('athletes.edit');
     Route::get('math/index','MathController@index')->name('math.index');
     Route::any('math/add','MathController@add')->name('math.add');
     //管理员列表
     Route::get('admin/index','AdminController@index')->name('admin.index');
     //添加管理员
-    Route::get('admin/index','AdminController@index')->name('admin.index');
+    Route::any('admin/add','AdminController@add')->name('admin.add');
+    //修改管理员信息
+    Route::any('admin/edit','AdminController@edit')->name('admin.edit');
+    //删除管理员信息
+    Route::get('admin/del','AdminController@del')->name('admin.del');
 });
