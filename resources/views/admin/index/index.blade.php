@@ -123,10 +123,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">管理员列表</a>
+                                <a class="J_menuItem" href="{{route('admin.index')}}">管理员列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">添加管理员</a>
+                                <a class="J_menuItem" href="{{route('admin.add')}}">添加管理员</a>
                             </li>
                         </ul>
                     </li>

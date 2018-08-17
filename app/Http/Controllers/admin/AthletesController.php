@@ -32,4 +32,28 @@ class AthletesController extends Controller
     		return view('admin.athletes.add',compact('mes'));
     	}
     }
+    public function edit(){
+		$id = Input::all()['id'];
+    	if (Input::method() == 'POST') {
+    		$data1 = Input::all();
+    		unset($data1['_token']);
+   			$data1['image'] = '/admin/img/a1.jpg';
+            $data1['add_time'] = date('Y-m-d H:i:s');
+
+            if(Athletes::where('id',$id) -> update($data1)){
+            	$data = Athletes::all();
+            	return view('admin.athletes.index',compact('data'));        
+            }else{
+             	$data2 = Athletes::where('id',$id)->first() -> toArray();
+    			$data2['show'] = '1';
+    			return view('admin.athletes.edit' ,compact('data2'));
+            }            
+    	}else{    		
+    		$data2 = Athletes::where('id',$id)->first() -> toArray();
+    		$data2['show'] = '0';
+    		return view('admin.athletes.edit' ,compact('data2'));
+    	}
+    	
+    	
+    }
 }
