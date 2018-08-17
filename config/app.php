@@ -231,6 +231,8 @@ return [
 
         //第三方
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        //自己添加
+        'Input' => Illuminate\Support\Facades\Input::class
 
     ],
 

@@ -60,10 +60,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">运动员列表</a>
+                                <a class="J_menuItem" href="{{route('athletes.index')}}">运动员列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">添加运动员信息</a>
+                                <a class="J_menuItem" href="{{route('athletes.add')}}">添加运动员信息</a>
                             </li>
                         </ul>
                     </li>

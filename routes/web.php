@@ -22,4 +22,8 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::any('athletes/add','AthletesController@add')->name('athletes.add');
     Route::get('math/index','MathController@index')->name('math.index');
     Route::any('math/add','MathController@add')->name('math.add');
+    //管理员列表
+    Route::get('admin/index','AdminController@index')->name('admin.index');
+    //添加管理员
+    Route::get('admin/index','AdminController@index')->name('admin.index');
 });
