@@ -90,13 +90,13 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">比赛数据列表</a>
+                                <a class="J_menuItem" href="{{route('Mdata.index')}}">比赛数据列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">比赛数据添加</a>
+                                <a class="J_menuItem" href="{{route('Mdata.edit')}}">比赛数据添加</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">比赛数据批量上传</a>
+                                <a class="J_menuItem" href="{{route('excel.index')}}">比赛数据批量上传</a>
                             </li>
                         </ul>
                     </li>
@@ -109,9 +109,6 @@
                         <ul class="nav nav-second-level">
                             <li>
                             <a class="J_menuItem" href="{{ route('achievement.index')}}">比赛成绩列表</a>
-                            </li>
-                            <li>
-                            <a class="J_menuItem" href="{{ route('achievement.add')}}">比赛数据添加</a>
                             </li>
                         </ul>
                     </li>
