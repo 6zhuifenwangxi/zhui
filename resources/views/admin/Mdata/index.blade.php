@@ -10,7 +10,7 @@
     <title> - 数据表格</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -32,12 +32,12 @@
                     </div>
                     <div class="ibox-content">
                         <form class="form-horizontal">
-                            {{csrf_field()}}
+                        {{csrf_field()}}
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛名称：</label>
                                 <div class="col-sm-8">
                                     <select style="font-size:12px" id='game' class="form-control m-b" name="game_name">
-                                        <option>请选择比赛</option>
+                                        <option value="0">请选择比赛</option>
                                         @foreach ($data['game_name'] as $val)                                           
                                             <option value='{{$val->id}}'>{{$val->game_name}}</option>                                           
                                         @endforeach
@@ -48,7 +48,7 @@
                                 <label class="col-sm-3 control-label">运动员：</label>
                                 <div class="col-sm-8">
                                     <select style="font-size:12px" id='user' class="form-control m-b" name="user">
-                                        <option>请选择运动员</option>
+                                        <option value="0">请选择运动员</option>
                                         @foreach ($data['user'] as $val)                                           
                                             <option value='{{ $val-> id}}'>{{$val->user_name}}</option>                                           
                                         @endforeach
@@ -64,11 +64,10 @@
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table ">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>运动员</th>
                                     <th>局数</th>
                                     <th>得分</th>
                                     <th>失分</th>
@@ -97,7 +96,7 @@
                                     </td>
                                   </tr>
                                 @endforeach --}}
-                            </tfoot>
+                             </tbody>
                         </table>
 
                     </div>
@@ -129,17 +128,44 @@
         $(function(){
             $('button').click(function(even){
                 even.preventDefault();
-                var user = $('#game option:selected').val();
-                var game = $('#user option:selected').val();
-                var token1 = '{{ csrf_token() }}';
-                console.log(token1)
+                var user = $('#user option:selected').val();
+                var game = $('#game option:selected').val();
                 $.ajax({
                     type:'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
                     url:'',
-                    data:"{user:user,game:game,_token:token1}",
+                    data:{user:user,game:game},
                     dataType:'json',
                     success:function(data){
-                        alert(data);
+                       if(data['code'] == "0"){
+                           alert(data['msg']);
+                       }else if(data['code'] == '1'){
+                           var str = "<h4>"+data['msg']+"</h4>"
+                           $('tbody').empty().append(str);
+                       }else{
+                        //    console.log(data);
+                           var table = '';
+                           $.each(data,function(i,val){
+                            //    console.log(val.id);
+                               table += '<tr class="gradeX">'
+                               table += '<td>'+val.id+'</td>';
+                               table += '<td>'+val.class+'</td>';
+                               table += '<td>'+val.score_first+'</td>';
+                               table += '<td>'+val.score_last+'</td>';
+                               table += '<td>'+val.send+'</td>';
+                               table += '<td>'+val.bat_number+'</td>';
+                               table += '<td>'+val.tool+'</td>';
+                               table += '<td>'+val.get_lose+'</td>';
+                               table += '<td>';
+                            //    table += "<span ><a class='btn btn-outline btn-info style' href='javascript:;' onclick=edit('赛事信息修改','{{route('Mdata.edit')}}','"+val.id+"','700','500')>编辑</a></span>";
+                               table += "<span ><a class='btn btn-outline btn-info style' href={{route('Mdata.edit')}}?id="+val.id+" >编辑</a></span>";
+                               table += '</td>';
+                               table += '</tr>';
+                            });
+                           $('tbody').empty().append(table);
+                       }
                     }
                 });
             });
@@ -191,29 +217,15 @@
         }
     </script>
     <script>
-        function dlt(id){
-            
-            $.get("{{ route('math.dlt')}}",'id='+id,function(data){
-                if(data.code=="0"){
-                    layer.alert(data.msg);
-                    setTimeout(function(){
-                        self.location="{{route('math.index')}}";
-                    },2000);
-                }else{
-                    layer.alert(data.msg);
-                }
-            },'json')
-        }
-        function edit(title,url,id,w,h){
-            layer_show(title,url+'?id='+id,w,h);
-        }
-            @if(count($errors)>0)
-              var err ='';
-            @foreach($errors->all() as $error)
-              err +="{{$error}}<br/>";
-            @endforeach
-              layer.alert(err);
-          @endif
+        $(function(){
+            function edit(title,url,id,w,h){
+                alert("ok");
+                layer_show(title,url+'?id='+id,w,h);
+            }
+        })
+        $('.style').click(function(){
+            alert("ok");
+        })
     </script>
     
     
