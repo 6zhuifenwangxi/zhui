@@ -73,8 +73,8 @@
                                     <td>{{$item->game_date}}</td>
                                     <td>{{$item->game_time}}</td>
                                     <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a->user_name}}</td>
-                                    <td>{{$item->rel_b->user_name}}</td>
+                                    <td>{{$item->rel_a}}</td>
+                                    <td>{{$item->rel_b}}</td>
                                     <td>{{$item->game_project}}</td>
                                     <td>{{$item->state}}</td>
                                     <td>{{$item->city}}</td>
