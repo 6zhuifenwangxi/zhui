@@ -34,7 +34,7 @@
                         </h5>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal" method="post" action="">
+                        <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                         	{{ csrf_field()}}
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
