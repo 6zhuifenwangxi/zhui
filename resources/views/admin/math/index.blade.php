@@ -151,8 +151,8 @@
     </script>
     <script>
         function dlt(id){
-            
-            $.get("{{ route('math.dlt')}}",'id='+id,function(data){
+            layer.confirm('是否删除',function(){
+                $.get("{{ route('math.dlt')}}",'id='+id,function(data){
                 if(data.code=="0"){
                     layer.alert(data.msg);
                     setTimeout(function(){
@@ -162,6 +162,7 @@
                     layer.alert(data.msg);
                 }
             },'json')
+            }) 
         }
         function edit(title,url,id,w,h){
             layer_show(title,url+'?id='+id,w,h);
