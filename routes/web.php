@@ -31,7 +31,8 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     //比赛数据管理
     Route::any('Mdata/index','MdataController@index')->name('Mdata.index');
     Route::any('Mdata/edit','MdataController@edit')->name('Mdata.edit');
-    Route::any('Excel/index','ExcelController@index')->name('excel.index');
+    Route::get('Excel/index','ExcelController@index')->name('excel.index');
+    Route::any('Excel/template','ExcelController@template')->name('excel.template');
     //管理员列表
     Route::get('admin/index','AdminController@index')->name('admin.index');
     //添加管理员
@@ -40,4 +41,5 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::any('admin/edit','AdminController@edit')->name('admin.edit');
     //删除管理员信息
     Route::get('admin/del','AdminController@del')->name('admin.del');
+    Route::post('uploader/webuploader','UploaderController@webuploader')->name('webuploader');
 });
