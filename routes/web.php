@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::any('math/edit','MathController@edit')->name('math.edit');
     //成绩管理模块
     Route::get('achievement/index','AchievementController@index')->name('achievement.index');
-    Route::any('achievement/add','AchievementController@add')->name('achievement.add');
+    Route::get('achievement/add','AchievementController@add')->name('achievement.add');
     //比赛数据管理
     Route::any('Mdata/index','MdataController@index')->name('Mdata.index');
     Route::any('Mdata/edit','MdataController@edit')->name('Mdata.edit');

@@ -26,6 +26,9 @@
         .xia{
             background: orange;
         }
+        select.form-control{
+            padding: 3px 12px;
+        }
     </style>
 </head>
 
@@ -35,7 +38,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>基本 <small>分类，查找</small></h5>
+                        <h5>首页 <small>数据，添加</small></h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -55,7 +58,26 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
+                            <div class="ibox-content">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">比赛名称：</label>
+                                            <div class="col-sm-8">
+                                                <select style="font-size:12px" id='game' class="form-control m-b" name="game_id">
+                                                      <option value="">请选择</option> 
+                                                    @foreach ($game as $item)
+                                                        <option value="{{$item->id}}">{{$item->game_name}}—{{$item->game_stage}}—{{$item->rel_a->user_name}} VS {{$item->rel_b->user_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-8" >
+                                                <button class="btn btn-sm btn-info" id="btnn" type="button">添加</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
@@ -94,7 +116,7 @@
                                     </td>
                                     <td>
                                     <span class="shang"><a href="javascript:;" >上线</a></span>
-                                    <span class="xia"><a href="javascript:;" onclick="dlt('{{$item->id}}')">下线</a></span>
+                                    <span class="xia"><a href="javascript:;" >下线</a></span>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -148,10 +170,8 @@
                 "width": "90%",
                 "height": "100%"
             });
-            
-
         });
-
+       
         function fnClickAddRow() {
             $('#editable').dataTable().fnAddData([
                 "Custom row",
@@ -159,32 +179,20 @@
                 "New row",
                 "New row",
                 "New row"]);
-
         }
+        $('#btnn').click(function(){
+           var id =$('#game').val();
+           $.get("{{route('achievement.add')}}",'id='+id,function(data){
+               if(data=='0'){
+                   layer.alert('添加成功');
+               }else if(data =="没有数据"){
+                   layer.alert('没有数据');
+               }else{
+                   layer.alert('添加失败');
+               }
+           })
+        })
     </script>
-    <script>
-        function dlt(id){
-            
-            $.get("{{ route('math.dlt')}}",'id='+id,function(data){
-                if(data.code=="0"){
-                    layer.alert(data.msg);
-                    setTimeout(function(){
-                        self.location="{{route('math.index')}}";
-                    },2000);
-                }else{
-                    layer.alert(data.msg);
-                }
-            },'json')
-        }
-            @if(count($errors)>0)
-              var err ='';
-            @foreach($errors->all() as $error)
-              err +="{{$error}}<br/>";
-            @endforeach
-              layer.alert(err);
-          @endif
-    </script>
-    
     
 
 </body>
