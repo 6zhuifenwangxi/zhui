@@ -27,6 +27,9 @@
             margin-right: 40px;
             margin-left: 20px;
         }
+        select.form-control{
+            padding: 3px 12px;
+        }
     </style>
 </head>
 

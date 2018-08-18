@@ -21,6 +21,9 @@
         .btn1{
             margin-left:0px;
         }
+        select.form-control{
+            padding: 3px 12px;
+        }
     </style>
 </head>
 
@@ -30,7 +33,7 @@
             <div class="col-sm-max">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form class="form-horizontal m-t" action="{{ route('excel.template')}}" method="post">
+                         <form class="form-horizontal m-t" id="form-member-add" action="{{ route('excel.template')}}" method="post">
                                 <div class="form-group">
                                         <label class="col-sm-3 control-label">下载模板</label>
                                     <div class="col-sm-4 col-sm-offset-3 btn1">
@@ -75,7 +78,7 @@
                              <input type="hidden" value="1" name="show">
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-3">
-                                    <a href=""><button class="btn btn-primary" type="submit" id="btn">提交</button></a>
+                                    <button class="btn btn-primary" type="submit" id="btn">提交</button>
                                 </div>
                             </div>
                         </form>
@@ -101,11 +104,17 @@
     <script src="/admin/js/demo/form-validate-demo.js"></script>
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
    <script src="/admin/webuploader-0.1.5/webuploader.js"></script>
+   <script type="text/javascript" src="/admin/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/admin/js/validate-methods.js"></script>
+    <script type="text/javascript" src="/admin/js/messages_zh.js"></script>
+    <script src="/admin/js/H-ui.js"></script>
+    <script src="/admin/js/H-ui.admin.js"></script>
    <script type="text/javascript">
     var _token = "{{csrf_token()}}";
     </script>
     <script>
         $(function() {
+           
         var $ = jQuery,
             $list = $('#fileList'),
             // // 优化retina, 在retina下这个值是2
@@ -205,12 +214,7 @@
             $( '#'+file.id ).find('.progress').remove();
         });
 
-
-        $('.skin-minimal input').iCheck({
-            checkboxClass: 'icheckbox-blue',
-            radioClass: 'iradio-blue',
-            increaseArea: '20%'
-        });
+        
 
         $("#form-member-add").validate({
             rules: {
@@ -233,11 +237,7 @@
 						//判断返回值code
 						if(data == '0'){
 							//成功
-							layer.msg('导入成功！',{icon:1,time:2000},function(){
-								var index = parent.layer.getFrameIndex(window.name);
-								parent.location.href = parent.location.href;
-								parent.layer.close(index);
-							});
+							layer.msg('导入成功！',{icon:1,time:2000});
 						}else{
 							//失败
 							layer.msg('导入失败！',{icon:5,time:2000});
@@ -249,10 +249,25 @@
 				});
             }
         });
+        // $('#btn').click(function(){
+        //         var form =new FormData();
+        //         $.ajax({
+        //             type:"post",
+        //             url:"{{route('excel.template')}}",
+        //             data:from,
+        //             success:function(data){
+        //                 if(data==0){
+        //                     alert('导入成功');
+        //                 }esle{
+        //                     alert('导入失败');
+        //                 }
+        //             }
+        //         }) 
+        //     })
     });
     
     </script>
-    
+  
 
 </body>
 

@@ -50,9 +50,9 @@ class ExcelController extends Controller
                    ];
                }
                if(Game_data::insert($arr)){
-                $response =0;
+                    $response ='0';
                 }else{
-                    $response =1;
+                    $response ='1';
                 }
                 echo $response;
             });
