@@ -27,6 +27,9 @@
             margin-right: 40px;
             margin-left: 20px;
         }
+        select.form-control{
+            padding: 3px 12px;
+        }
     </style>
 </head>
 
@@ -101,7 +104,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">比赛国家：</label>
                                 <div class="col-sm-4">
-                                    <input id="cemail" type="text" class="form-control" name="state" placeholder='请输入比赛国家'' required="" aria-required="true">
+                                    <input id="cemail" type="text" class="form-control " name="state" placeholder='请输入比赛国家'' required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -150,8 +153,7 @@
 
     <script src="/admin/js/demo/form-validate-demo.js"></script>
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
-   
-    
+
     
 
 </body>
