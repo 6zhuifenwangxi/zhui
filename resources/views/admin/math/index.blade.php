@@ -68,23 +68,23 @@
                             <tbody>
                                 @foreach($date as $item)
                                     <tr class="gradeX">
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->game_name}} </td>
-                                    <td>{{$item->game_date}}</td>
-                                    <td>{{$item->game_time}}</td>
-                                    <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a->user_name}}</td>
-                                    <td>{{$item->rel_b->user_name}}</td>
-                                    <td>{{$item->game_project}}</td>
-                                    <td>{{$item->state}}</td>
-                                    <td>{{$item->city}}</td>
-                                    <td>
-                                    <span ><a href="javascript:;" class="btn btn-outline btn-info" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
-                                    <span><a href="javascript:;" class="btn btn-outline btn-danger" onclick="dlt('{{$item->id}}')">删除</a></span>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->game_name}} </td>
+                                        <td>{{$item->game_date}}</td>
+                                        <td>{{$item->game_time}}</td>
+                                        <td>{{$item->game_stage}}</td>
+                                        <td>{{$item->rel_a->user_name}}</td>
+                                        <td>{{$item->rel_b->user_name}}</td>
+                                        <td>{{$item->game_project}}</td>
+                                        <td>{{$item->state}}</td>
+                                        <td>{{$item->city}}</td>
+                                        <td>
+                                        <span ><a href="javascript:;" class="btn btn-outline btn-info" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
+                                        <span><a href="javascript:;" class="btn btn-outline btn-danger" onclick="dlt('{{$item->id}}')">删除</a></span>
                                     </td>
-                                </tr>
+                                 </tr>
                                 @endforeach
-                            </tfoot>
+                            </tbody>
                         </table>
 
                     </div>
