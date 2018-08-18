@@ -25,7 +25,8 @@ class AdminController extends Controller
     			$data['show'] = 1;
     		}else{
     			$data['show'] = 0;
-    		}
+			}
+			$data['add_time'] = time();
     		if (Admin::insert($data)) {
     			$data = Admin::all();
     			return view('admin.admin.index',compact('data'));
@@ -43,8 +44,36 @@ class AdminController extends Controller
     	if (Admin::where('id',$id) -> delete()) {
     		$data = Admin::all();
     		return view('admin.admin.index',compact('data'));
-    	}else{
-
     	}
-    }
+	}
+	public function edit(){
+		$id = Input::all()['id'];
+		if(Input::method() == 'POST'){
+			$data = Input::all();
+			unset($data['_token']);
+			unset($data['id']);
+    		if($data['userpwd'] == ''){
+				$data2 = Admin::where('id',$id)->first()->toArray();
+    			$data2['msg'] = '1';
+    			return view('admin.admin.edit',compact('data2'));
+    		}
+    		if (count($data) == '2') {
+    			$data['show'] = 1;
+    		}else{
+    			$data['show'] = 0;
+			}
+			$data['add_time'] = time();
+    		if (Admin::where('id',$id)->update($data)) {
+    			$data = Admin::all();
+    			return view('admin.admin.index',compact('data'));
+    		}else{
+    			$data2['msg'] = '1';
+    			return view('admin.admin.edit',compact('data2'));
+    		}
+		}else{			
+			$data2 = Admin::where('id',$id)->first()->toArray();
+			$data2['msg'] = '0';
+			return view('admin.admin.edit',compact('data2'));
+		}
+	}
 }

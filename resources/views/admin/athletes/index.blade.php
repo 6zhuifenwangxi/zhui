@@ -64,7 +64,7 @@
                                     <td>{{ $val -> add_time }}</td>
                                      <td> 
                                     	<a href='{{route("athletes.edit")}}?id={{$val->id}}' class="btn btn-outline btn-info">修改</a>
-                                    	<a href='' class="btn btn-outline btn-danger">删除</a>
+                                    	<a href='{{route("athletes.del")}}?id={{$val->id}}' class="btn btn-outline btn-danger">删除</a>
                                     </td>
                                  </tr>
                                 @endforeach
@@ -90,7 +90,15 @@
 
     <!-- 自定义js -->
     <script src="/admin/js/content.js?v=1.0.0"></script>
-
+    <script>
+        jQuery(document).ready(function($) {
+    		$('.btn').click(function(event) {
+    			if (!confirm("确认删除吗?")) {
+    				event.preventDefault();	
+    			}
+    		});
+    	});
+    </script>
 
     <!-- Page-Level Scripts -->
     <script>

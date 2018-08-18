@@ -14,12 +14,13 @@ class AthletesController extends Controller
     	return view('admin.athletes.index',compact('data'));
     }
 
-    public function add(){
+    public function add(Request $request){
     	if(Input::method() == 'POST'){
     		$data = Input::all();
     		unset($data['_token']);
             $data['image'] = '/admin/img/a1.jpg';
-            $data['add_time'] = date('Y-m-d H:i:s');
+			$data['add_time'] = date('Y-m-d H:i:s');
+			$data['add_admin_id'] = $request -> session() ->all()['user']->id;
             if(Athletes::insert($data)){
                $data =  Athletes::all();
                 return view('admin.athletes.index',compact('data'));
@@ -52,8 +53,13 @@ class AthletesController extends Controller
     		$data2 = Athletes::where('id',$id)->first() -> toArray();
     		$data2['show'] = '0';
     		return view('admin.athletes.edit' ,compact('data2'));
-    	}
-    	
-    	
-    }
+    	}  	
+	}
+	public  function del(){
+		$id = Input::all()['id'];
+    	if (Athletes::where('id',$id) -> delete()) {
+    		$data = Athletes::all();
+    		return view('admin.athletes.index',compact('data'));
+		}
+	}
 }

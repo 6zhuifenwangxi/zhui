@@ -47,10 +47,16 @@
                    				 <tr>
                                     <td>{{ $val -> id }}</td>
                                     <td>{{ $val -> username }}</td>
-                                    <td>{{ $val -> show }}</td>
+                                    <td>
+                                        @if($val->show == '1')
+                                            启用
+                                        @else
+                                            禁用
+                                        @endif
+                                    </td>
                                     <td>{{ date('Y-m-d H:i:s',$val -> add_time) }}</td>
                                     <td> 
-                                    	<a href='' class="btn btn-outline btn-info">修改</a>
+                                    	<a href='{{route("admin.edit")}}?id={{$val -> id}}' class="btn btn-outline btn-info">修改</a>
                                     	<a href='{{route("admin.del")}}?id={{$val -> id}}' class="btn btn-outline btn-danger" date-val="{{$val ->id}}">删除</a>
                                     </td>
                                  </tr>
@@ -79,7 +85,7 @@
     <script src="/admin/js/content.js?v=1.0.0"></script>
     <script> 
     	jQuery(document).ready(function($) {
-    		$('.btn').click(function(event) {
+    		$('.btn-danger').click(function(event) {
     			if (!confirm("确认删除吗?")) {
     				event.preventDefault();	
     			}

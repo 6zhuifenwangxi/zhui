@@ -38,7 +38,6 @@
                         	{{ csrf_field()}}
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">用户名：</label>
-
                                 <div class="col-sm-8">
                                     <input type="text" name="username" placeholder="请输入管理员用户名" class="form-control"> 
                                 </div>
