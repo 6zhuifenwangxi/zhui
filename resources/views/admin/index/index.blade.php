@@ -93,7 +93,7 @@
                                 <a class="J_menuItem" href="{{route('Mdata.index')}}">比赛数据列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="{{route('Mdata.edit')}}">比赛数据添加</a>
+                                <a class="J_menuItem" href="{{route('Mdata.add')}}">比赛数据添加</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="{{route('excel.index')}}">比赛数据批量上传</a>

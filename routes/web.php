@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     //添加运动员
     Route::any('athletes/add','AthletesController@add')->name('athletes.add');
     Route::any('athletes/edit','AthletesController@edit')->name('athletes.edit');
+    Route::any('athletes/del','AthletesController@del')->name('athletes.del');
     Route::get('math/index','MathController@index')->name('math.index');
     Route::any('math/add','MathController@add')->name('math.add');
     Route::get('math/dlt','MathController@dlt')->name('math.dlt');
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     //比赛数据管理
     Route::any('Mdata/index','MdataController@index')->name('Mdata.index');
     Route::any('Mdata/edit','MdataController@edit')->name('Mdata.edit');
+    Route::any('Mdata/add','MdataController@add')->name('Mdata.add');
     Route::get('Excel/index','ExcelController@index')->name('excel.index');
     Route::any('Excel/template','ExcelController@template')->name('excel.template');
     //管理员列表

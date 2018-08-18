@@ -52,4 +52,30 @@ class MdataController extends Controller
             return view('admin.Mdata.edit',compact('data2'));
         }
     }
+    public function add(){
+        if(Input::method() == 'POST'){
+            $data = Input::all();
+            unset($data['_token']);
+            if(Mdata::insert($data)){
+                $data = [];
+                $user = DB::table("user")->get();
+                $game_name = DB::table('message')->get();
+                $data['user'] = $user;
+                $data['game_name'] = $game_name;  
+                $data['show'] = '2';
+                return view('admin.Mdata.add',compact('data'));
+             }else{
+                 $data['show'] = '1'; 
+                 return view('admin.Mdata.add' ,compact('data'));
+             }
+        }else{
+            $data = [];
+            $user = DB::table("user")->get();
+            $game_name = DB::table('message')->get();
+            $data['user'] = $user;
+            $data['game_name'] = $game_name;  
+            $data['show'] = '0';   
+            return view('admin.Mdata.add',compact('data'));
+        }
+    }
 }
