@@ -66,21 +66,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($date as $item)
+                                @foreach ($date as $info)
                                     <tr class="gradeX">
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->game_name}} </td>
-                                    <td>{{$item->game_date}}</td>
-                                    <td>{{$item->game_time}}</td>
-                                    <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a}}</td>
-                                    <td>{{$item->rel_b}}</td>
-                                    <td>{{$item->game_project}}</td>
-                                    <td>{{$item->state}}</td>
-                                    <td>{{$item->city}}</td>
+                                    <td>{{$info->id}}</td>
+                                    <td>{{$info->game_name}} </td>
+                                    <td>{{$info->game_date}}</td>
+                                    <td>{{$info->game_time}}</td>
+                                    <td>{{$info->game_stage}}</td>
+                                    <td>{{ $info->rel_a->user_name}}</td>
+                                    <td>{{ $info->rel_b->user_name}}</td>
+                                    <td>{{$info->game_project}}</td>
+                                    <td>{{$info->state}}</td>
+                                    <td>{{$info->city}}</td>
                                     <td>
-                                    <span ><a href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
-                                    <span><a href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
+                                    <span ><a href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$info->id}}','700','500')" >编辑</a></span>
+                                    <span><a href="javascript:;" onclick="dlt('{{$info->id}}')">删除</a></span>
                                     </td>
                                 </tr>
                                 @endforeach
