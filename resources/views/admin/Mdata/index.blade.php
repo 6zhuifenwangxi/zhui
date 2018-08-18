@@ -11,14 +11,14 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css//bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/admin/css//font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="/admin/css//plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link href="/admin/css//animate.css" rel="stylesheet">
-    <link href="/admin/css//style.css?v=4.1.0" rel="stylesheet">
+    <link href="/admin/css/animate.css" rel="stylesheet">
+    <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
@@ -29,23 +29,38 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>基本 <small>分类，查找</small></h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="table_data_tables.html#">选项1</a>
-                                </li>
-                                <li><a href="table_data_tables.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">比赛名称：</label>
+                                <div class="col-sm-8">
+                                    <select style="font-size:12px" id='game' class="form-control m-b" name="game_name">
+                                        <option>请选择比赛</option>
+                                        @foreach ($data['game_name'] as $val)                                           
+                                            <option value='{{$val->id}}'>{{$val->game_name}}</option>                                           
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">运动员：</label>
+                                <div class="col-sm-8">
+                                    <select style="font-size:12px" id='user' class="form-control m-b" name="user">
+                                        <option>请选择运动员</option>
+                                        @foreach ($data['user'] as $val)                                           
+                                            <option value='{{ $val-> id}}'>{{$val->user_name}}</option>                                           
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-8">
+                                    <button class="btn btn-sm btn-info">搜 索</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="ibox-content">
 
@@ -53,37 +68,35 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>比赛名称</th>
-                                    <th>比赛日期</th>
-                                    <th>比赛时间</th>
-                                    <th>比赛阶段</th>
-                                    <th>运动员A</th>
-                                    <th>运动员B</th>
-                                    <th>比赛项目</th>
-                                    <th>比赛国家</th>
-                                    <th>比赛城市</th>
+                                    <th>运动员</th>
+                                    <th>局数</th>
+                                    <th>得分</th>
+                                    <th>失分</th>
+                                    <th>发接轮次</th>
+                                    <th>拍数</th>
+                                    <th>手段</th>
+                                    <th>得失分</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($date as $item)
-                                    <tr class="gradeX">
+                             {{--   @foreach ($data as $item)
+                                  <tr class="gradeX">
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->game_name}} </td>
-                                    <td>{{$item->game_date}}</td>
-                                    <td>{{$item->game_time}}</td>
-                                    <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a->user_name}}</td>
-                                    <td>{{$item->rel_b->user_name}}</td>
-                                    <td>{{$item->game_project}}</td>
-                                    <td>{{$item->state}}</td>
-                                    <td>{{$item->city}}</td>
+                                    <td>{{$item->rel->user_name}}</td>
+                                    <td>{{$item->class}} </td>
+                                    <td>{{$item->score_first}}</td>
+                                    <td>{{$item->score_last}}</td>
+                                    <td>{{$item->send}}</td>
+                                    <td>{{$item->bat_number}}</td>
+                                    <td>{{$item->tool}}</td>
+                                    <td>{{$item->get_lose}}</td>
                                     <td>
-                                    <span ><a href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
-                                    <span><a href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
+                                    <span ><a class="btn btn-outline btn-info" href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
+                                    <span><a class="btn btn-outline btn-danger" href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
                                     </td>
-                                </tr>
-                                @endforeach
+                                  </tr>
+                                @endforeach --}}
                             </tfoot>
                         </table>
 
@@ -111,6 +124,34 @@
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
     <script src="/admin/js/H-ui.js"></script>
     <script src="/admin/js/H-ui.admin.js"></script>
+
+<script>
+        $(function(){
+            $('button').click(function(even){
+                even.preventDefault();
+                var user = $('#game option:selected').val();
+                var game = $('#user option:selected').val();
+                var token1 = '{{ csrf_token() }}';
+                console.log(token1)
+                $.ajax({
+                    type:'POST',
+                    url:'',
+                    data:"{user:user,game:game,_token:token1}",
+                    dataType:'json',
+                    success:function(data){
+                        alert(data);
+                    }
+                });
+            });
+        });
+    
+    
+    </script>
+
+
+
+
+
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
@@ -176,7 +217,6 @@
     </script>
     
     
-
 </body>
 
 </html>
