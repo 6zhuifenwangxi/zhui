@@ -17,8 +17,16 @@ class AthletesController extends Controller
     public function add(Request $request){
     	if(Input::method() == 'POST'){
     		$data = Input::all();
-    		unset($data['_token']);
-            $data['image'] = '/admin/img/a1.jpg';
+			unset($data['_token']);
+			//获取文件后缀名
+			$ext = pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+			$tmp_name = $_FILES['image']['tmp_name'];
+			// dump($tmp_name);
+			// die;
+			$dst_name = "./admin/img/".uniqid('sport_',true).".".$ext;
+			$dst_name1 = ltrim($dst_name,'.');
+			move_uploaded_file($tmp_name,$dst_name);
+            $data['image'] = $dst_name1;
 			$data['add_time'] = date('Y-m-d H:i:s');
 			$data['add_admin_id'] = $request -> session() ->all()['user']->id;
             if(Athletes::insert($data)){
