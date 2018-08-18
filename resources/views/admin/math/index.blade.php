@@ -11,14 +11,14 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css//bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/admin/css//font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="/admin/css//plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link href="/admin/css//animate.css" rel="stylesheet">
-    <link href="/admin/css//style.css?v=4.1.0" rel="stylesheet">
+    <link href="/admin/css/animate.css" rel="stylesheet">
+    <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
@@ -59,28 +59,28 @@
                                     <th>比赛阶段</th>
                                     <th>运动员A</th>
                                     <th>运动员B</th>
-                                    <th>比赛项目</th>
+                                    <th width='50px'>比赛项目</th>
                                     <th>比赛国家</th>
                                     <th>比赛城市</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($date as $item)
+                                @foreach($date as $item)
                                     <tr class="gradeX">
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->game_name}} </td>
                                     <td>{{$item->game_date}}</td>
                                     <td>{{$item->game_time}}</td>
                                     <td>{{$item->game_stage}}</td>
-                                    <td>{{$item->rel_a}}</td>
-                                    <td>{{$item->rel_b}}</td>
+                                    <td>{{$item->rel_a->user_name}}</td>
+                                    <td>{{$item->rel_b->user_name}}</td>
                                     <td>{{$item->game_project}}</td>
                                     <td>{{$item->state}}</td>
                                     <td>{{$item->city}}</td>
                                     <td>
-                                    <span ><a href="javascript:;" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
-                                    <span><a href="javascript:;" onclick="dlt('{{$item->id}}')">删除</a></span>
+                                    <span ><a href="javascript:;" class="btn btn-outline btn-info" onclick="edit('赛事信息修改','{{ route('math.edit')}}','{{$item->id}}','700','500')" >编辑</a></span>
+                                    <span><a href="javascript:;" class="btn btn-outline btn-danger" onclick="dlt('{{$item->id}}')">删除</a></span>
                                     </td>
                                 </tr>
                                 @endforeach
