@@ -19,16 +19,6 @@
 
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
-    <style>
-        .shang{
-            background: green;
-        }
-        .xia{
-            background: orange;
-        }
-        select.form-control{
-            padding: 3px 12px;
-        }
     </style>
 </head>
 
@@ -115,8 +105,8 @@
                                         
                                     </td>
                                     <td>
-                                    <span class="shang"><a href="javascript:;" >上线</a></span>
-                                    <span class="xia"><a href="javascript:;" >下线</a></span>
+                                    <span class="shang"><a  class="btn btn-outline btn-info href="javascript:;" >上线</a></span>
+                                    <span class="xia"><a class="btn btn-outline btn-danger" href="javascript:;" >下线</a></span>
                                     </td>
                                 </tr>
                                 @endforeach
