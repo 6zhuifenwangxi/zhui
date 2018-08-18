@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::get('achievement/index','AchievementController@index')->name('achievement.index');
     Route::any('achievement/add','AchievementController@add')->name('achievement.add');
     //比赛数据管理
-    Route::get('Mdata/index','MdataController@index')->name('Mdata.index');
+    Route::any('Mdata/index','MdataController@index')->name('Mdata.index');
     Route::any('Mdata/edit','MdataController@edit')->name('Mdata.edit');
     Route::any('Excel/index','ExcelController@index')->name('excel.index');
     //管理员列表
