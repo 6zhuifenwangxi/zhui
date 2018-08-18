@@ -35,7 +35,7 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">hAdmin</strong>
+                                    <strong class="font-bold">{{$name}}</strong>
                                     </span>
                                 </span>
                             </a>
@@ -140,9 +140,9 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" title='退出' href="#">
+                        <a class="dropdown-toggle count-info logout" data-toggle="dropdown" title='退出' href="#">
                                 <i class="fa fa-close"></i>
-                            </a>
+                        </a>
                        
                         </li>
                         </li>
@@ -174,5 +174,19 @@
 <p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
 </div>
 </body>
+<script>
+    $(function(){
+        $('.logout').click(function(){
+            layer.confirm('确认要退出吗？',function(){
+                $.get("{{route('public.logout')}}",function(data){
+                    if(data=='1'){
+                        location.href ="{{route('admin.public.index')}}";
+                    }
+                    layer.alert('退出失败');
+                })
+            })
+        })
+    })
+</script>
 
 </html>

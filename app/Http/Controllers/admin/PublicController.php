@@ -24,5 +24,13 @@ class PublicController extends Controller
     	}else{
     		return redirect(route('admin.public.index'))->withErrors(['error'=>'用户名或密码错误']);
     	}
-    }
+	}
+	public function logout(Request $request){
+		if(!$request->session()->forget('user')){
+			$data ='1';
+		}else{
+			$data ='2';
+		}
+		echo $data;
+	}
 }

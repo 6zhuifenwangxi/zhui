@@ -15,7 +15,7 @@ Route::post('admin/public/check','admin\PublicController@check')->name('admin.ch
 Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], function () { 
     Route::get('index/index','IndexController@index')->name('index.index');
     Route::get('index/welcome','IndexController@welcome')->name('index.welcome');
-    Route::get('public/logout','PublicController@check')->name('public.logout');
+    Route::get('public/logout','PublicController@logout')->name('public.logout');
     //运动员列表
     Route::get('athletes/index','AthletesController@index')->name('athletes.index');
     //添加运动员

@@ -185,6 +185,9 @@
            $.get("{{route('achievement.add')}}",'id='+id,function(data){
                if(data=='0'){
                    layer.alert('添加成功');
+                   setTimeout(function(){
+                       location.href="{{route('achievement.index')}}";
+                   },1000)
                }else if(data =="没有数据"){
                    layer.alert('没有数据');
                }else{
