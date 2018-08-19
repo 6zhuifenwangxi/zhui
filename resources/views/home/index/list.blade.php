@@ -75,70 +75,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                                                        <tr style="text-align: center;height: 50px;">
+                                    <tr style="text-align: center;height: 50px;">
                                         <td style="font-size: 20px">0</td>
                                         <td style="font-size: 20px">3</td>
                                         <td style="font-size: 20px">发球</td>
                                         <td style="font-size: 20px">7</td>
                                         <td style="font-size: 20px">0</td>
                                     </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">18</td>
-                                        <td style="font-size: 20px">13</td>
-                                        <td style="font-size: 20px">正手</td>
-                                        <td style="font-size: 20px">13</td>
-                                        <td style="font-size: 20px">23</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">26</td>
-                                        <td style="font-size: 20px">19</td>
-                                        <td style="font-size: 20px">反手</td>
-                                        <td style="font-size: 20px">16</td>
-                                        <td style="font-size: 20px">21</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">3</td>
-                                        <td style="font-size: 20px">11</td>
-                                        <td style="font-size: 20px">侧身</td>
-                                        <td style="font-size: 20px">5</td>
-                                        <td style="font-size: 20px">6</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">0</td>
-                                        <td style="font-size: 20px">4</td>
-                                        <td style="font-size: 20px">控制</td>
-                                        <td style="font-size: 20px">6</td>
-                                        <td style="font-size: 20px">2</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">13</td>
-                                        <td style="font-size: 20px">16</td>
-                                        <td style="font-size: 20px">发抢段</td>
-                                        <td style="font-size: 20px">22</td>
-                                        <td style="font-size: 20px">15</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">22</td>
-                                        <td style="font-size: 20px">22</td>
-                                        <td style="font-size: 20px">接抢段</td>
-                                        <td style="font-size: 20px">19</td>
-                                        <td style="font-size: 20px">16</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">7</td>
-                                        <td style="font-size: 20px">6</td>
-                                        <td style="font-size: 20px">转换段</td>
-                                        <td style="font-size: 20px">2</td>
-                                        <td style="font-size: 20px">11</td>
-                                    </tr>
-                                                                        <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">5</td>
-                                        <td style="font-size: 20px">8</td>
-                                        <td style="font-size: 20px">相持段</td>
-                                        <td style="font-size: 20px">4</td>
-                                        <td style="font-size: 20px">10</td>
-                                    </tr>
-                                                                        </tbody>
+                                     
+                                    </tbody>
                                 </table>
                             </div>
                        </div>
