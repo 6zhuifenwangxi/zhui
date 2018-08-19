@@ -19,7 +19,7 @@
 
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
-    </style>
+</style>
 </head>
 
 <body class="gray-bg">

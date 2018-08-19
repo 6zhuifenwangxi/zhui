@@ -16,7 +16,7 @@ class AthletesController extends Controller
 
     public function add(Request $request){
     	if(Input::method() == 'POST'){
-    		$data = Input::all();
+			$data = Input::all();
 			unset($data['_token']);
 			//获取文件后缀名
 			$ext = pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);

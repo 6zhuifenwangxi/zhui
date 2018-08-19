@@ -181,8 +181,9 @@
                 $.get("{{route('public.logout')}}",function(data){
                     if(data=='1'){
                         location.href ="{{route('admin.public.index')}}";
+                    }else{
+                         layer.alert('退出失败');
                     }
-                    layer.alert('退出失败');
                 })
             })
         })

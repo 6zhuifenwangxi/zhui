@@ -77,12 +77,12 @@ class AchievementController extends Controller
             if($arr[count($arr)-1]['get_lose'] =="得"){
                 $de =$arr[count($arr)-1]['score_first']+1;
                 $shi =$arr[count($arr)-1]['score_last'];
-                $small =$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                $small =$de."—".$shi.",";
                 $count++;
         }else if($arr[count($arr)-1]['get_lose'] =="失"){
                 $de =$arr[count($arr)-1]['score_first'];
                 $shi =$arr[count($arr)-1]['score_last']+1;
-                $small =$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                $small =$de."—".$shi.",";
                 $count_lose--;
         }
        }
@@ -90,12 +90,12 @@ class AchievementController extends Controller
             if($arr1[count($arr1)-1]['get_lose'] =="得"){
                     $de =$arr1[count($arr1)-1]['score_first']+1;
                     $shi =$arr1[count($arr1)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr1[count($arr1)-1]['get_lose'] =="失"){
                     $de =$arr1[count($arr1)-1]['score_first'];
                     $shi =$arr1[count($arr1)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
        }
@@ -103,12 +103,12 @@ class AchievementController extends Controller
             if($arr2[count($arr2)-1]['get_lose'] =="得"){
                     $de =$arr2[count($arr2)-1]['score_first']+1;
                     $shi =$arr2[count($arr2)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr2[count($arr2)-1]['get_lose'] =="失"){
                     $de =$arr2[count($arr2)-1]['score_first'];
                     $shi =$arr2[count($arr2)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
        }
@@ -116,12 +116,12 @@ class AchievementController extends Controller
                 if($arr3[count($arr3)-1]['get_lose'] =="得"){
                     $de =$arr3[count($arr3)-1]['score_first']+1;
                     $shi =$arr3[count($arr3)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr3[count($arr3)-1]['get_lose'] =="失"){
                     $de =$arr3[count($arr3)-1]['score_first'];
                     $shi =$arr3[count($arr3)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
          }
@@ -129,12 +129,12 @@ class AchievementController extends Controller
                 if($arr4[count($arr4)-1]['get_lose'] =="得"){
                     $de =$arr4[count($arr4)-1]['score_first']+1;
                     $shi =$arr4[count($arr4)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr4[count($arr4)-1]['get_lose'] =="失"){
                     $de =$arr4[count($arr4)-1]['score_first'];
                     $shi =$arr4[count($arr4)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
         }
@@ -142,12 +142,12 @@ class AchievementController extends Controller
                 if($arr5[count($arr5)-1]['get_lose'] =="得"){
                     $de =$arr5[count($arr5)-1]['score_first']+1;
                     $shi =$arr5[count($arr5)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr5[count($arr5)-1]['get_lose'] =="失"){
                     $de =$arr5[count($arr5)-1]['score_first'];
                     $shi =$arr5[count($arr5)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
         }
@@ -155,17 +155,17 @@ class AchievementController extends Controller
                 if($arr6[count($arr6)-1]['get_lose'] =="得"){
                     $de =$arr6[count($arr6)-1]['score_first']+1;
                     $shi =$arr6[count($arr6)-1]['score_last'];
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count++;
             }else if($arr6[count($arr6)-1]['get_lose'] =="失"){
                     $de =$arr6[count($arr6)-1]['score_first'];
                     $shi =$arr6[count($arr6)-1]['score_last']+1;
-                    $small .=$de."—".$shi."&nbsp;&nbsp;&nbsp;";
+                    $small .=$de."—".$shi.",";
                     $count_lose--;
             }
         }
         $count_sum=$count.'—'.$count_lose;
-        
+        $small=rtrim($small,',');
         $data =array('mess_id'=>$id,'big'=>$count_sum,'small'=>$small);
         if(Count_score::insert($data)){
             echo '0';
