@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Document</title>
     <!-- 引入Layui样式 -->
-    <link rel="stylesheet" href="css/layui.css" media="all">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/home/css/layui.css" media="all">
+    <link rel="stylesheet" href="/home/css/index.css">
 </head>
 
 <body>
@@ -18,12 +18,12 @@
             <div class="layui-col-xs8">
                 <div class="layui-col-xs6">
                     <a href="/">
-                        <img src="picture/logo_bjtydx.png" alt="">
+                        <img src="/home/picture/logo_bjtydx.png" alt="">
                     </a>
                 </div>
                 <div class="layui-col-xs6">
                     <a href="/">
-                        <img src="picture/ittf_logo.png" alt="">
+                        <img src="/home/picture/ittf_logo.png" alt="">
                     </a>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                   <div class="match_all layui-row">
                        <div class="layui-col-xs3 img_man">
                             <h3 class="name_name">樊振东</h3>
-                            <img src="picture/a_.jpg" alt="" class="img_in">
+                            <img src="/home/picture/a_.jpg" alt="" class="img_in">
                             <!-- echarts -->
                             <div class="echars_in">
                                 <div id="user_a_s" style="width: 250px;height:160px;"></div>
@@ -75,13 +75,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr style="text-align: center;height: 50px;">
-                                        <td style="font-size: 20px">0</td>
-                                        <td style="font-size: 20px">3</td>
-                                        <td style="font-size: 20px">发球</td>
-                                        <td style="font-size: 20px">7</td>
-                                        <td style="font-size: 20px">0</td>
-                                    </tr>
+                                        @foreach ($count as $item)
+                                            <tr style="text-align: center;height: 50px;">
+                                                <td style="font-size: 20px">{{$item['lose_a']}}</td>
+                                            <td style="font-size: 20px">{{$item['get_a']}}</td>
+                                            <td style="font-size: 20px">{{$item['means']}}</td>
+                                            <td style="font-size: 20px">{{$item['get_b']}}</td>
+                                            <td style="font-size: 20px">{{$item['lose_b']}}</td>
+                                            </tr>
+                                        @endforeach
+                                    
                                      
                                     </tbody>
                                 </table>
@@ -89,7 +92,7 @@
                        </div>
                        <div class="layui-col-xs3 img_man">
                             <h3 class="name_name">JoaoGERALDO</h3>
-                            <img src="picture/b_.jpg" alt="" class="img_in">
+                            <img src="/home/picture/b_.jpg" alt="" class="img_in">
                             <div class="echars_in">
                                 <div id="user_b_d" style="width: 250px;height:160px;"></div>
                             </div>
@@ -158,7 +161,6 @@
                     <div class="layui-col-xs6" style="width: 100%">
                         <div id="danju" style="width: 100%;height:400px;"></div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -167,9 +169,9 @@
   <footer class="footer">
          <p>XXXXX有限公司</p>
   </footer>
-   <script src="js/echarts.simple.min.js"></script>
-   <script src="js/jquery.js"></script>
-   <script src="js/layui.all.js"></script>
+   <script src="/home/js/echarts.simple.min.js"></script>
+   <script src="/home/js/jquery.js"></script>
+   <script src="/home/js/layui.all.js"></script>
 
 </body>
 <!--前4个统计图-->
@@ -196,10 +198,10 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:13, name:'发抢段'},
-                    {value:22, name:'接抢段'},
-                    {value:7, name:'转换段'},
-                    {value:5, name:'相持段'},
+                    {value:{{$count[5]['lose_a']}}, name:'发抢段'},
+                    {value:{{$count[6]['lose_a']}}, name:'接抢段'},
+                    {value:{{$count[7]['lose_a']}}, name:'转换段'},
+                    {value:{{$count[8]['lose_a']}}, name:'相持段'},
 
                 ],
                 itemStyle: {
@@ -239,10 +241,10 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:16, name:'发抢段'},
-                    {value:22, name:'接抢段'},
-                    {value:6, name:'转换段'},
-                    {value:8, name:'相持段'},
+                    {value:{{$count[5]['get_a']}}, name:'发抢段'},
+                    {value:{{$count[6]['get_a']}}, name:'接抢段'},
+                    {value:{{$count[7]['get_a']}}, name:'转换段'},
+                    {value:{{$count[8]['get_a']}}, name:'相持段'},
 
                 ],
                 itemStyle: {
@@ -283,10 +285,10 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:22, name:'发抢段'},
-                    {value:19, name:'接抢段'},
-                    {value:2, name:'转换段'},
-                    {value:4, name:'相持段'},
+                    {value:{{$count[5]['get_b']}}, name:'发抢段'},
+                    {value:{{$count[6]['get_b']}}, name:'接抢段'},
+                    {value:{{$count[7]['get_b']}}, name:'转换段'},
+                    {value:{{$count[8]['get_b']}}, name:'相持段'},
 
                 ],
                 itemStyle: {
@@ -326,10 +328,10 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:15, name:'发抢段'},
-                    {value:16, name:'接抢段'},
-                    {value:11, name:'转换段'},
-                    {value:10, name:'相持段'},
+                    {value:{{$count[5]['lose_b']}}, name:'发抢段'},
+                    {value:{{$count[6]['lose_b']}}, name:'接抢段'},
+                    {value:{{$count[7]['lose_b']}}, name:'转换段'},
+                    {value:{{$count[8]['lose_b']}}, name:'相持段'},
 
                 ],
                 itemStyle: {
@@ -342,20 +344,18 @@
             }
         ]
     };
-
-
+    
     // 使用刚指定的配置项和数据显示图表。
     myChart3.setOption(option);
 </script>
 
 <!---->
 <script>
-
     var my1 = echarts.init(document.getElementById('user_a_zhu'));
 
     option = {
         title : {
-            text: '樊振东各板得失分及得分率',
+        text: '{{$user_aname}}各板得失分及得分率',
             y:'bottom',
             x:'center'
         },
@@ -385,7 +385,7 @@
                 type: 'value',
                 name: '分数',
                 min: 0,
-                max: 15,
+                max: {{$max_a}},
                 interval: 1,
                 axisLabel: {
                     formatter: '{value}'
@@ -406,18 +406,18 @@
             {
                 name:'得分',
                 type:'bar',
-                data:[3,15,13,7,4,2,8]
+            data:[{{$pldata[0]['get_a']}},{{$pldata[1]['get_a']}},{{$pldata[2]['get_a']}},{{$pldata[3]['get_a']}},{{$pldata[4]['get_a']}},{{$pldata[5]['get_a']}},{{$pldata[6]['get_a']}}]
             },
             {
                 name:'失分',
                 type:'bar',
-                data:[0,7,13,15,6,1,5]
+                data:[{{$pldata[0]['lose_a']}},{{$pldata[1]['lose_a']}},{{$pldata[2]['lose_a']}},{{$pldata[3]['lose_a']}},{{$pldata[4]['lose_a']}},{{$pldata[5]['lose_a']}},{{$pldata[6]['lose_a']}}]
             },
             {
                 name:'得分率',
                 type:'line',
                 yAxisIndex: 1,
-                data:[100,68.181818181818,50,31.818181818182,40,66.666666666667,61.538461538462]
+            data:[{{$Scoring[0]}},{{$Scoring[2]}},{{$Scoring[4]}},{{$Scoring[6]}},{{$Scoring[8]}},{{$Scoring[10]}},{{$Scoring[12]}}]
             }
         ]
     };
@@ -430,7 +430,7 @@
 
     option = {
         title : {
-            text: 'JoaoGERALDO各板得失分及得分率',
+        text: '{{$user_bname}}各板得失分及得分率',
             y:'bottom',
             x:'center'
         },
@@ -460,7 +460,7 @@
                 type: 'value',
                 name: '分数',
                 min: 0,
-                max: 15,
+            max: {{$max_b}},
                 interval: 1,
                 axisLabel: {
                     formatter: '{value}'
@@ -481,18 +481,18 @@
             {
                 name:'得分',
                 type:'bar',
-                data:[7,13,15,6,1,1,4]
+                data:[{{$pldata[0]['get_b']}},{{$pldata[1]['get_b']}},{{$pldata[2]['get_b']}},{{$pldata[3]['get_b']}},{{$pldata[4]['get_b']}},{{$pldata[5]['get_b']}},{{$pldata[6]['get_b']}}]
             },
             {
                 name:'失分',
                 type:'bar',
-                data:[0,3,15,13,7,4,10]
+                data:[{{$pldata[0]['lose_b']}},{{$pldata[1]['lose_b']}},{{$pldata[2]['lose_b']}},{{$pldata[3]['lose_b']}},{{$pldata[4]['lose_b']}},{{$pldata[5]['lose_b']}},{{$pldata[6]['lose_b']}}]
             },
             {
                 name:'得分率',
                 type:'line',
                 yAxisIndex: 1,
-                data:[100,81.25,50,31.578947368421,12.5,20,28.571428571429]
+                data:[{{$Scoring[1]}},{{$Scoring[3]}},{{$Scoring[5]}},{{$Scoring[7]}},{{$Scoring[9]}},{{$Scoring[11]}},{{$Scoring[13]}}]
             }
         ]
     };
@@ -511,7 +511,7 @@
         tooltip: {},
         legend: {
             x:'left',
-            data: ['樊振东', 'JoaoGERALDO']
+        data: ['{{$user_aname}}', '{{$user_bname}}']
 
         },
         radar: {
@@ -539,12 +539,22 @@
             // areaStyle: {normal: {}},
             data : [
                 {
-                    value : [55.17, 50, 46.15, 61.54, 52.31],
-                    name : '樊振东'
+                value : [{{$count[5]['get_a']/($count[5]['get_a']+$count[5]['lose_a'])*100 }},
+                {{$count[6]['get_a']/($count[6]['get_a']+$count[6]['lose_a'])*100 }}, 
+                {{$count[7]['get_a']/($count[7]['get_a']+$count[7]['lose_a'])*100 }},
+                {{$count[8]['get_a']/($count[8]['get_a']+$count[8]['lose_a'])*100 }},
+                {{($count[5]['get_a']+$count[6]['get_a']+$count[7]['get_a']+$count[8]['get_a'])/($count[5]['get_a']+$count[6]['get_a']+$count[7]['get_a']+$count[8]['get_a']+$count[5]['lose_a']+$count[6]['lose_a']+$count[7]['lose_a']+$count[8]['lose_a'])*100}},
+                   ],
+                name : '{{$user_aname}}'
                 },
                 {
-                    value : [59.46, 54.29, 15.38, 28.57, 52.89],
-                    name : 'JoaoGERALDO'
+                    value : [{{$count[5]['get_b']/($count[5]['get_b']+$count[5]['lose_b'])*100 }},
+                    {{$count[6]['get_b']/($count[6]['get_b']+$count[6]['lose_b'])*100 }}, 
+                    {{$count[7]['get_b']/($count[7]['get_b']+$count[7]['lose_b'])*100 }},
+                    {{$count[8]['get_b']/($count[8]['get_b']+$count[8]['lose_b'])*100 }},
+                    {{($count[5]['get_b']+$count[6]['get_b']+$count[7]['get_b']+$count[8]['get_b'])/($count[5]['get_b']+$count[6]['get_b']+$count[7]['get_b']+$count[8]['get_b']+$count[5]['lose_b']+$count[6]['lose_b']+$count[7]['lose_b']+$count[8]['lose_b'])*100}},
+                    ],  
+                name : '{{$user_bname}}'
                 }
             ]
         }]
@@ -562,7 +572,7 @@
         tooltip: {},
         legend: {
             x:'left',
-            data: ['樊振东', 'JoaoGERALDO']
+            data: ['{{$user_aname}}', '{{$user_bname}}']
 
         },
         radar: {
@@ -590,12 +600,22 @@
             // areaStyle: {normal: {}},
             data : [
                 {
-                    value : [100, 41.94, 42.22, 78.57, 100],
-                    name : '樊振东'
+                    value : [{{$count[0]['get_a']/($count[0]['get_a']+$count[0]['lose_a'])*100 }},
+                    {{$count[1]['get_a']/($count[1]['get_a']+$count[1]['lose_a'])*100 }}, 
+                    {{$count[2]['get_a']/($count[2]['get_a']+$count[2]['lose_a'])*100 }},
+                    {{$count[3]['get_a']/($count[3]['get_a']+$count[3]['lose_a'])*100 }},
+                    {{$count[4]['get_a']/($count[4]['get_a']+$count[4]['lose_a'])*100 }},
+                   ],
+                name : '{{$user_aname}}'
                 },
                 {
-                    value : [100, 36.11, 43.24, 45.45, 75],
-                    name : 'JoaoGERALDO'
+                    value : [{{$count[0]['get_b']/($count[0]['get_b']+$count[0]['lose_b'])*100 }},
+                    {{$count[1]['get_b']/($count[1]['get_b']+$count[1]['lose_b'])*100 }}, 
+                    {{$count[2]['get_b']/($count[2]['get_b']+$count[2]['lose_b'])*100 }},
+                    {{$count[3]['get_b']/($count[3]['get_b']+$count[3]['lose_b'])*100 }},
+                    {{$count[4]['get_b']/($count[4]['get_b']+$count[4]['lose_b'])*100 }},
+                   ],
+                name : '{{$user_bname}}'
                 }
             ]
         }]
@@ -608,65 +628,15 @@
     var a =[];
     var b =[];
     var keys =[];
-        a.push(0)
-    keys.push('0')
-        a.push(0)
-    keys.push('1')
-        a.push(0)
-    keys.push('2')
-        a.push(0)
-    keys.push('3')
-        a.push(1)
-    keys.push('4')
-        a.push(2)
-    keys.push('5')
-        a.push(2)
-    keys.push('6')
-        a.push(3)
-    keys.push('7')
-        a.push(4)
-    keys.push('8')
-        a.push(4)
-    keys.push('9')
-        a.push(5)
-    keys.push('10')
-        a.push(6)
-    keys.push('11')
-        a.push(6)
-    keys.push('12')
-        a.push(6)
-    keys.push('13')
-        a.push(7)
-    keys.push('14')
-        a.push(8)
-    keys.push('15')
-        a.push(8)
-    keys.push('16')
-        a.push(8)
-    keys.push('17')
-        a.push(8)
-    keys.push('18')
-        b.push(0)
-        b.push(1)
-        b.push(2)
-        b.push(3)
-        b.push(3)
-        b.push(3)
-        b.push(4)
-        b.push(4)
-        b.push(4)
-        b.push(5)
-        b.push(5)
-        b.push(5)
-        b.push(6)
-        b.push(7)
-        b.push(7)
-        b.push(7)
-        b.push(8)
-        b.push(9)
-        b.push(11)
-    
-
+    @foreach($sum_a as $item)
+        a.push({{$item}})
+    @endforeach
+    @foreach($sum_b as $item)
+        b.push({{$item}})
+    @endforeach
+    @foreach($keycount as $item)
+        keys.push({{$item}})
+    @endforeach
     var my5 = echarts.init(document.getElementById('danju'));
     option = {
 
@@ -674,7 +644,7 @@
             trigger: 'axis'
         },
         legend: {
-            data:['樊振东','JoaoGERALDO']
+        data:['{{$user_aname}}','{{$user_bname}}']
         },
 
 
@@ -690,13 +660,13 @@
         },
         series: [
             {
-                name:'樊振东',
+            name:'{{$user_aname}}',
                 type:'line',
                 stack: '总量',
                 data:a
             },
             {
-                name:'JoaoGERALDO',
+            name:'{{$user_bname}}',
                 type:'line',
                 stack: '总量',
                 data:b
@@ -711,7 +681,7 @@
             form.on('submit(formDemo)', function(data1){
 
 
-                $.get('index_office?class='+data1.field.class+'&mess_id='+data1.field.mess_id+'&user_id='+data1.field.user_id).done(function (data) {
+                $.get('{{route('list.find')}}'+'?class='+data1.field.class+'&mess_id='+data1.field.mess_id+'&user_id='+data1.field.user_id).done(function (data) {
                     // 填入数据
                     if (data.code==100){layer.msg(data.msg,{icon:2});return false;}
                     my5.setOption({
