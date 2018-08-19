@@ -19,7 +19,6 @@
 
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
-    </style>
 </head>
 
 <body class="gray-bg">
@@ -71,17 +70,17 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>比赛时间</th>
-                                    <th>比赛名称</th>
+                                    <th width="30">ID</th>
+                                    <th width="80">比赛时间</th>
+                                    <th width="120">比赛名称</th>
                                     <th>比赛项目</th>
-                                    <th>比赛阶段</th>
+                                    <th width="80">比赛阶段</th>
                                     <th>运动员A</th>
                                     <th>运动员B</th>
                                     <th>大比分</th>
-                                    <th class="center" width="80">小比分</th>
+                                    <th class="center" width="105">小比分</th>
                                     <th>状态</th>
-                                    <th>操作</th>
+                                    <th width="120">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,7 +94,7 @@
                                     <td>{{$item->rel_id->rel_a->user_name}}</td>
                                     <td>{{$item->rel_id->rel_b->user_name}}</td>
                                     <td>{{$item->big}}</td>
-                                    <td>{{$item->small}}</td>
+                                    <td class='style'>{{$item->small}}</td>
                                     <td>
                                         @if ($item->rel_id->show =='1')
                                             已上线
@@ -135,7 +134,43 @@
     <!-- 自定义js -->
     <script src="/admin/js/content.js?v=1.0.0"></script>
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
-
+    <script>
+        //自定义处理字符方法
+	function cutString(str, len) {
+		//length属性读出来的汉字长度为1
+		//如果
+		// console.log(str.length);
+		if (str.length * 2 <= len) {
+			return str;
+		}
+		var strlen = 0;
+		var s = "";
+		for (var i = 0; i < str.length; i++) {
+			s = s + str.charAt(i);
+			if (str.charCodeAt(i) > 128) {
+				strlen = strlen + 2;
+				if (strlen >= len) {
+					return s.substring(0, s.length - 1) + " · · ·";
+				}
+			} else {
+				strlen = strlen + 1;
+				if (strlen >= len) {
+					return s.substring(0, s.length - 2) + " · · ·";
+				}
+			}
+		}
+		return s;
+	};
+	//获取class名为cut_str的对象,然后用each方法进行遍历对象
+	$('.style').each(function(i, item) { //参数说明 , i表示索引 , item表示元素
+		//获取每行数据的内容
+        var e = item.innerHTML;
+		//调用cutString方法
+		var s = cutString(e, 14); //参数说明 , e表示获取的字符串内容 , 500表示规定
+		//将cutString函数的返回值赋回原标签内
+		item.innerHTML = s;
+  });
+    </script>
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
