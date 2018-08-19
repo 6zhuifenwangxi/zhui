@@ -45,12 +45,10 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
     Route::get('admin/del','AdminController@del')->name('admin.del');
     Route::post('uploader/webuploader','UploaderController@webuploader')->name('webuploader');
 });
-
-Route::group(['prefix' => 'home','namespace' =>'Home'], function () {
-    //前台主页
-    Route::get('home/index','IndexController@index')->name('home.index');
+Route::get('/','home\IndexController@index')->name('index.index');
+Route::group(['prefix' => 'home','namespace' =>'home'], function () {
     //前台搜索
-    Route::post('home/search','IndexController@search')->name('home.search');
+    Route::post('index/search','IndexController@search')->name('index.search');
     //详情页
-    Route::get('home/list','ListController@search')->name('home.list');
+    Route::get('list/list','ListController@search')->name('list.list');
  });
