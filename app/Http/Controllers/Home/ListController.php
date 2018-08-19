@@ -12,10 +12,10 @@ class ListController extends Controller
 {
     public function list(){
         // $mess_id=Input::get('mess_id');
-        // $user_a=Message::where('id',$mess_id)->get()->user_a;
-        // $user_b=Message::where('id',$mess_id)->get()->user_b;
-        $user_aname=DB::table('user')->where('id',19)->get()->first()->user_name;
-        $user_bname=DB::table('user')->where('id',20)->get()->first()->user_name;
+        $user_a=Message::where('id',14)->get()->first()->user_a;
+        $user_b=Message::where('id',14)->get()->first()->user_b;
+        $user_aname=DB::table('user')->where('id',$user_a)->get()->first()->user_name;
+        $user_bname=DB::table('user')->where('id',$user_b)->get()->first()->user_name;
         $means=array('发球','正手','反手','侧身','控制');
         $stage=[
             "发抢段"=>[
@@ -38,16 +38,16 @@ class ListController extends Controller
         //获取字段为means数组的数据
         foreach ($means as $key => $value) {
             $get_a=Game_data::where([
-                ['mess_id','=',14],['user_id','=',19],['tool','=',$value],['get_lose','=','得']
+                ['mess_id','=',14],['user_id','=',$user_a],['tool','=',$value],['get_lose','=','得']
             ])->count();
             $lose_a=Game_data::where([
-                ['mess_id','=',14],['user_id','=',19],['tool','=',$value],['get_lose','=','失']
+                ['mess_id','=',14],['user_id','=',$user_a],['tool','=',$value],['get_lose','=','失']
             ])->count();
             $get_b=Game_data::where([
-                ['mess_id','=',14],['user_id','=',20],['tool','=',$value],['get_lose','=','得']
+                ['mess_id','=',14],['user_id','=',$user_b],['tool','=',$value],['get_lose','=','得']
             ])->count();
             $lose_b=Game_data::where([
-                ['mess_id','=',14],['user_id','=',20],['tool','=',$value],['get_lose','=','失']
+                ['mess_id','=',14],['user_id','=',$user_b],['tool','=',$value],['get_lose','=','失']
             ])->count();
             $count[]=[
                 "get_a"=>$get_a,"lose_a"=>$lose_a,"means"=>$value,"get_b"=>$get_b,'lose_b'=>$lose_b
@@ -56,16 +56,16 @@ class ListController extends Controller
         //获取字段为stage数组的数据
        foreach ($stage as $key => $value) {
             $get_a=Game_data::where([
-                ['mess_id','=',14],['user_id','=',19],['get_lose','=','得']
+                ['mess_id','=',14],['user_id','=',$user_a],['get_lose','=','得']
             ])->wherein('bat_number',$value)->count();
             $lose_a=Game_data::where([
-                ['mess_id','=',14],['user_id','=',19],['get_lose','=','失']
+                ['mess_id','=',14],['user_id','=',$user_a],['get_lose','=','失']
             ])->wherein('bat_number',$value)->count();
             $get_b=Game_data::where([
-                ['mess_id','=',14],['user_id','=',20],['get_lose','=','得']
+                ['mess_id','=',14],['user_id','=',$user_b],['get_lose','=','得']
             ])->wherein('bat_number',$value)->count();
             $lose_b=Game_data::where([
-                ['mess_id','=',14],['user_id','=',20],['get_lose','=','失']
+                ['mess_id','=',14],['user_id','=',$user_b],['get_lose','=','失']
             ])->wherein('bat_number',$value)->count();
             $count[]=[
                 "get_a"=>$get_a,"lose_a"=>$lose_a,"means"=>$key,"get_b"=>$get_b,'lose_b'=>$lose_b
@@ -74,16 +74,16 @@ class ListController extends Controller
        //获取字段为plate数组的数据
        foreach ($plate as $key => $value) {
         $get_a=Game_data::where([
-            ['mess_id','=',14],['user_id','=',19],['bat_number','=',$value],['get_lose','=','得']
+            ['mess_id','=',14],['user_id','=',$user_a],['bat_number','=',$value],['get_lose','=','得']
         ])->count();
         $lose_a=Game_data::where([
-            ['mess_id','=',14],['user_id','=',19],['bat_number','=',$value],['get_lose','=','失']
+            ['mess_id','=',14],['user_id','=',$user_a],['bat_number','=',$value],['get_lose','=','失']
         ])->count();
         $get_b=Game_data::where([
-            ['mess_id','=',14],['user_id','=',20],['bat_number','=',$value],['get_lose','=','得']
+            ['mess_id','=',14],['user_id','=',$user_b],['bat_number','=',$value],['get_lose','=','得']
         ])->count();
         $lose_b=Game_data::where([
-            ['mess_id','=',14],['user_id','=',20],['bat_number','=',$value],['get_lose','=','失']
+            ['mess_id','=',14],['user_id','=',$user_b],['bat_number','=',$value],['get_lose','=','失']
         ])->count();
         $pldata[]=[
             "get_a"=>$get_a,"lose_a"=>$lose_a,"means"=>$key,"get_b"=>$get_b,'lose_b'=>$lose_b
@@ -127,10 +127,10 @@ class ListController extends Controller
         $sum_b[]=0;
         $keycount[]=0;
         $data_a=Game_data::where([
-            ['mess_id','=',14],['user_id','=',19],['class','=',1]
+            ['mess_id','=',14],['user_id','=',$user_a],['class','=',2]
         ])->get()->toArray();
         $data_b=Game_data::where([
-            ['mess_id','=',14],['user_id','=',20],['class','=',1]
+            ['mess_id','=',14],['user_id','=',$user_b],['class','=',2]
         ])->get()->toArray();
         foreach ($data_a as $key => $value) {
             if($value['get_lose']=="得"){
@@ -151,8 +151,8 @@ class ListController extends Controller
     public function find(){
         // $class =Input::get('class');
         // $mess_id=Input::get('mess_id');
-        // $user_a=Message::where('id',$mess_id)->get()->user_a;
-        // $user_b=Message::where('id',$mess_id)->get()->user_b;
+        $user_a=Message::where('id',14)->get()->first()->user_a;
+        $user_b=Message::where('id',14)->get()->first()->user_b;
         $count_a=0;
         $count_b=0;
         $dynamic=0;
@@ -163,10 +163,10 @@ class ListController extends Controller
         $sum_b[]=0;
         $keycount[]=0;
         $data_a=Game_data::where([
-            ['mess_id','=',14],['user_id','=',19],['class','=',1]
+            ['mess_id','=',14],['user_id','=',$user_a],['class','=',1]
         ])->get()->toArray();
         $data_b=Game_data::where([
-            ['mess_id','=',14],['user_id','=',20],['class','=',1]
+            ['mess_id','=',14],['user_id','=',$user_b],['class','=',1]
         ])->get()->toArray();
         foreach ($data_a as $key => $value) {
             if($value['get_lose']=="得"){
