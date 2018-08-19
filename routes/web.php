@@ -13,7 +13,7 @@
 Route::any('admin/public/login','admin\PublicController@login')->name('admin.public.index');
 Route::post('admin/public/check','admin\PublicController@check')->name('admin.check.login');
 Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], function () { 
-    Route::get('index/index','IndexController@index')->name('index.index');
+    Route::get('index/index','IndexController@index')->name('admin.index.index');
     Route::get('index/welcome','IndexController@welcome')->name('index.welcome');
     Route::get('public/logout','PublicController@logout')->name('public.logout');
     //运动员列表
@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin','namespace' =>'admin','middleware'=>'login'], 
 Route::get('/','home\IndexController@index')->name('index.index');
 Route::group(['prefix' => 'home','namespace' =>'home'], function () {
     //前台搜索
-    Route::post('index/search','IndexController@search')->name('index.search');
+    Route::any('index/search','IndexController@search')->name('index.search');
     //详情页
     Route::get('list/list','ListController@search')->name('list.list');
  });

@@ -195,7 +195,6 @@
             //方法级渲染
             table.render({
                 elem: '#LAY_table_user'
-                ,url: "/index_api.html"
                 ,cols: [[
                    {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
                     ,{field:'game_date', title: '比赛时间', width:120}
@@ -206,54 +205,29 @@
                     ,{field:'user_b', title: '运动员B', sort: true, width:80}
                     ,{field:'big', title: '大比分', width:80}
                     ,{field:'small', title: '小比分', sort: true}
-                    ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
+                    // ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
                 ]]
+                ,data: [
+                    @foreach($result as $val)
+                    {
+                        'id_sort':"{{$val->id}}",
+                        'game_date':"{{$val->game_date}}",
+                        'game_name':"{{$val->game_name}}",
+                        'game_project':"{{$val->game_project}}",
+                        'game_stage':"{{$val->game_stage}}",
+                        'user_a':"{{$val->user_name}}",
+                        'user_b':"{{$val->user_name}}",
+                        'big':"{{$val->big}}",
+                        'small':"{{$val->small}}",
+                    },
+                    @endforeach
+                ]   
                 ,id: 'testReload'
                 ,page: true
                 ,height: 550
             });
-
-            var $ = layui.$, active = {
-                reload: function(){
-                    var demoReload = $('#demoReload');
-                    var demoReload1 = $('#demoReload1');
-                    var demoReload2 = $('#demoReload2');
-                    var demoReload3 = $('#demoReload3');
-                    var demoReload4 = $('#demoReload4');
-                    var demoReload5 = $('#demoReload5');
-                    var demoReload6 = $('#demoReload6');
-                    var demoReload7 = $('#demoReload7');
-                    var demoReload8 = $('#demoReload8');
-                    var demoReload9 = $('#demoReload9');
-
-                    //执行重载
-                    table.reload('testReload', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        ,where: {
-                            key: {
-                                'game_date': demoReload.val(),
-                                'game_name': demoReload1.val(),
-                                'city': demoReload2.val(),
-                                'user_id': demoReload3.val(),
-                                'user_id2': demoReload4.val(),
-                                'hand': demoReload5.val(),
-                                'play': demoReload6.val(),
-                                'bat': demoReload7.val(),
-                                'game_stage': demoReload8.val(),
-                                'game_project': demoReload9.val(),
-                            }
-                        }
-                    });
-                }
-            };
-
-            $('.demoTable .layui-btn').on('click', function(){
-                var type = $(this).data('type');
-                active[type] ? active[type].call(this) : '';
-            });
         });
+          
     </script>
     <script>
         layui.use('laydate', function(){
@@ -264,63 +238,6 @@
                 elem: '#demoReload' //指定元素
             });
         });
-    </script>
-    <script>
-        layui.use('table', function(){
-            var table = layui.table;
-
-            //监听工具条
-            table.on('tool(user)', function(obj){
-                var data = obj.data;
-
-                if(obj.event === 'detail'){
-                    location.href = '/index_list.html'+'?mess_id='+data.mess_id
-                } else if(obj.event === 'del'){
-                    layer.confirm('真的删除行么', function(index){
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if(obj.event === 'edit'){
-                    layer.alert('编辑行：<br>'+ JSON.stringify(data))
-                }
-            });
-        });
-        layui.use('form', function(){
-            var form = layui.form;
-
-            //监听提交
-            form.on('submit(formDemo)', function(data){
-                layer.msg(JSON.stringify(data.field));
-                return false;
-            });
-        });
-        $(document).ready(function(){
-            $("form").submit(function(e){
-                e.preventDefault();
-
-            });
-        });
-        $('.reloadData').on('click',function () {
-            layui.table.render({
-                elem: '#LAY_table_user'
-                ,url: "/index_api.html"
-                ,cols: [[
-                    {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
-                    ,{field:'game_date', title: '比赛时间', width:120}
-                    ,{field:'game_name', title: '比赛名称', width:100, sort: true}
-                    ,{field:'game_project', title: '比赛项目', width:80}
-                    ,{field:'game_stage', title: '比赛阶段', width:80}
-                    ,{field:'user_a', title: '运动员A', sort: true, width:80}
-                    ,{field:'user_b', title: '运动员B', sort: true, width:80}
-                    ,{field:'big', title: '大比分', width:80}
-                    ,{field:'small', title: '小比分', sort: true}
-                    ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
-                ]]
-                ,id: 'testReload'
-                ,page: true
-                ,height: 500
-            });
-        })
     </script>
  <!-- 轮播 -->
  <script>
@@ -341,87 +258,4 @@
   </footer>
 
 </body>
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-//监听表格复选框选择
-        table.on('checkbox(user_one)', function(obj){
-
-        });
-        //方法级渲染
-        table.render({
-            elem: '#table_user'
-            ,url: '/one_list.html'
-            ,cols: [[
-                {checkbox: true, fixed: true}
-                ,{field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
-                ,{field:'game_date', title: '比赛时间', width:120}
-                ,{field:'game_name', title: '比赛名称', width:100, sort: true}
-                ,{field:'game_project', title: '比赛项目', width:80}
-                ,{field:'game_stage', title: '比赛阶段', width:80}
-                ,{field:'user_a', title: '运动员A', sort: true, width:80}
-                ,{field:'user_b', title: '运动员B', sort: true, width:80}
-                ,{field:'big', title: '大比分', width:80}
-                ,{field:'small', title: '小比分', sort: true}
-
-            ]]
-            ,id: 'one'
-            ,page: true
-            ,height: 550
-        });
-
-        var $ = layui.$, active = {
-            reload: function(){
-                var demoReload = $('#sou_one');
-
-                //执行重载
-                table.reload('one', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        key: {
-                            id: demoReload.val()
-                        }
-                    }
-                });
-            },
-            getCheckData: function(){ //获取选中数据
-
-                var checkStatus = table.checkStatus('one')
-                    ,data = checkStatus.data;
-                if (data==''){
-                    layer.msg('没有选择用户',{icon:2})
-                    return false;
-                }
-                if (data[0].check=='false'){
-                    layer.msg('没有删选用户',{icon:2})
-                    return false;
-                }
-                var arr = [];
-                $.each(data,function (k,v) {
-                    arr.push(v.mess_id)
-                })
-                location.href ='/one_list_all.html?mess_id='+arr+'&user_id='+data[0].user_name_id
-
-            }
-            ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('one')
-                    ,data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-            }
-            ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('one');
-                layer.msg(checkStatus.isAll ? '全选': '未全选')
-            }
-        };
-
-
-
-        $('.demoTable1 .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-        });
-    });
-</script>
 </html>

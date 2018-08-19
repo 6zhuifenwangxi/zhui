@@ -20,7 +20,7 @@ class PublicController extends Controller
     	$user = DB::table('admin')->where('username', $data['username'])->first(); 	
     	if ($user->userpwd == md5($data['password'])) {
     		$request -> session() ->put('user',$user);
-    		return redirect(route('index.index'));
+    		return redirect(route('admin.index.index'));
     	}else{
     		return redirect(route('admin.public.index'))->withErrors(['error'=>'用户名或密码错误']);
     	}
