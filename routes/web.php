@@ -50,5 +50,10 @@ Route::group(['prefix' => 'home','namespace' =>'home'], function () {
     //前台搜索
     Route::any('index/search','IndexController@search')->name('index.search');
     //详情页
+<<<<<<< HEAD
     Route::get('list/list','ListController@search')->name('list.list');
+=======
+    Route::get('list/list','ListController@list')->name('home.list');
+    Route::get('list/find','ListController@find')->name('list.find');
+>>>>>>> 15cd4b56459dc4ea9635d12154df74b44758bdb1
  });
