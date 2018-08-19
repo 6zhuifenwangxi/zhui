@@ -92,7 +92,7 @@
     <script src="/admin/js/content.js?v=1.0.0"></script>
     <script>
         jQuery(document).ready(function($) {
-    		$('.btn').click(function(event) {
+    		$('.btn-danger').click(function(event) {
     			if (!confirm("确认删除吗?")) {
     				event.preventDefault();	
     			}
