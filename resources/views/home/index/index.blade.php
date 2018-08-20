@@ -193,7 +193,6 @@
         layui.use('table', function(){
             var table = layui.table;
             //方法级渲染
-            
             table.render({
                 elem: '#LAY_table_user'
                 ,url:"{{route('index.search')}}"
@@ -209,9 +208,8 @@
                     ,{field:'small', title: '小比分', sort: true}
                     ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
                 ]]
-               
                 ,id: 'testReload'
-                // ,page: true
+                ,page: true
                 ,height: 550
             });
 
@@ -274,7 +272,7 @@
             //监听工具条
             table.on('tool(user)', function(obj){
                 var data = obj.data;
-                console.log(data.id);
+                // console.log(data.id);
                 if(obj.event === 'detail'){
                     location.href = '{{route("home.list")}}'+'?mess_id='+data.id;
                 } else if(obj.event === 'del'){
@@ -293,6 +291,7 @@
             //监听提交
             form.on('submit(formDemo)', function(data){
                 layer.msg(JSON.stringify(data.field));
+                console.log(data.field);
                 return false;
             });
         });
@@ -302,10 +301,11 @@
 
             });
         });
+        //监听重置
         $('.reloadData').on('click',function () {
             layui.table.render({
                 elem: '#LAY_table_user'
-                // url:"{{route('index.search')}}"
+                ,url:"{{route('index.search')}}"
                 ,cols: [[
                     {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
                     ,{field:'game_date', title: '比赛时间', width:120}
