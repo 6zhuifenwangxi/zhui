@@ -20,11 +20,17 @@ class IndexController extends Controller
                     ->join('count_score','message.id',"=",'count_score.mess_id')
                     ->join('user','message.user_b',"=",'user.id')
                     ->get()->toArray();
+        for($i = 0; $i<count($result); $i++){
+            $result[$i]->user_name_b = $result2[$i]->user_name;
+        }
+                dump(count($result));
                 dump($result);
                 dump($result2);
                 die;
         return view('home.index.index',compact('result'));
     }
+
+
     public function search(){
         $data = Input::all()['key'];      
         $a = ['game_date','game_name','city','user_id','user_id2','hand','play','bat','game_stage','game_project'];
@@ -40,7 +46,10 @@ class IndexController extends Controller
                 $sql .= $a[$j] ." = '". $data[$a[$j]]."' and ";
             }
             $sql = rtrim($sql,' and ');
+            // dump($sql);
+            // die;
             $result = Index::whereRaw($sql)->get()->toArray();
+            dump($result);
             return view('home.index.index',compact('result'));
         }
         

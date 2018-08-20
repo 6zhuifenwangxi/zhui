@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Document</title>
+    <title>北京体育大学</title>
     <!-- 引入Layui样式 -->
      <link rel="stylesheet" href="/home/css/layui.css" media="all">
     <link rel="stylesheet" href="/home/css/index.css">
@@ -78,67 +78,68 @@
                 <form class="layui-form">
                 <div class="demoTable" >
                     <div class="layui-inline layui-col-xs3"> <!-- 注意：这一层元素并不是必须的 -->
-                        <input type="text" name="game_date" class="layui-input" placeholder="比赛年/月份" id="demoReload">
+                        <input type="text" class="layui-input" placeholder="比赛年/月份" lay-key="1" id="demoReload">
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="game_name" lay-verify="" lay-search id="demoReload1">
+                        <select name="city" lay-verify="" lay-search id="demoReload1">
                             <option value="">比赛赛事</option>
-                                                        <option value="2018年世锦赛团体小组赛">2018年世锦赛团体小组赛</option>
-                                                    </select>
+                            <option value="2018年世锦赛团体小组赛">2018年世锦赛团体小组赛</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
                         <select name="city" lay-verify="" lay-search id="demoReload2">
                             <option value="">举 办 地</option>
-                                                        <option value="北京">北京</option>
-                                                    </select>
+                            <option value="北京">北京</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="user_id" lay-verify=""lay-search id="demoReload3">
+                        <select name="city" lay-verify=""lay-search id="demoReload3">
                             <option value="">运动员A </option>
-                                                        <option value="23">樊振东</option>
-                                                        <option value="24">JoaoGERALDO</option>
-                                                    </select>
+                            <option value="23">樊振东</option>
+                            <option value="24">JoaoGERALDO</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="user_id2" lay-verify=""lay-search id="demoReload4">
+                        <select name="city" lay-verify=""lay-search id="demoReload4">
                             <option value="">运动员B</option>
-                                                        <option value="23">樊振东</option>
-                                                        <option value="24">JoaoGERALDO</option>
-                                                    </select>
+                            <option value="23">樊振东</option>
+                            <option value="24">JoaoGERALDO</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="hand" lay-verify=""lay-search id="demoReload5">
+                        <select name="city" lay-verify=""lay-search id="demoReload5">
                             <option value="">执拍手</option>
-                                                        <option value="左手">左手</option>
-                                                        <option value="右手">右手</option>
-                                                    </select>
+                            <option value="左手">左手</option>
+                            <option value="右手">右手</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="play" lay-verify=""lay-search id="demoReload6">
+                        <select name="city" lay-verify=""lay-search id="demoReload6">
                             <option value="">打法类型</option>
-                                                        <option value="快攻结合弧圈">快攻结合弧圈</option>
-                                                    </select>
+                            <option value="快攻结合弧圈">快攻结合弧圈</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="bat" lay-verify=""lay-search id="demoReload7">
+                        <select name="city" lay-verify=""lay-search id="demoReload7">
                             <option value="">直横拍</option>
-                                                        <option value="横拍">横拍</option>
-                                                    </select>
+                            <option value="横拍">横拍</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="game_stage" lay-verify="" lay-search id="demoReload8">
+                        <select name="city" lay-verify="" lay-search id="demoReload8">
                             <option value="">比赛阶段</option>
-                                                        <option value="小组赛">小组赛</option>
-                                                    </select>
+                            <option value="小组赛">小组赛</option>
+                        </select>
                     </div>
                     <div class="layui-inline layui-col-xs3">
-                        <select name="game_project" lay-verify=""lay-search id="demoReload9">
+                        <select name="city" lay-verify=""lay-search id="demoReload9">
                             <option value="">比赛项目</option>
-                                                        <option value="男单">男单</option>
-                                                    </select>
+                            <option value="男单">男单</option>
+                        </select>
                     </div>
                     <div class="layui-inline">
-                        <button class="layui-btn" data-type="reload">搜索</button>
+                        <button class="layui-btn"  data-type="reload">搜索</button>
+                        <!-- <button class="layui-btn" lay-submit lay-filter="*">立即提交</button> -->
                         <button type="reset" class="layui-btn layui-btn-primary reloadData">重置</button>
                     </div>
                 </div>
@@ -163,9 +164,9 @@
                 <div class="layui-inline layui-col-xs3">
                     <select name="city" lay-verify="" lay-search id="sou_one" class="layui-input layui_select">
                         <option value="">所有人</option>
-                                                <option value="23" class="option_item">樊振东</option>
-                                                <option value="24" class="option_item">JoaoGERALDO</option>
-                                            </select>
+                            <option value="23" class="option_item">樊振东</option>
+                            <option value="24" class="option_item">JoaoGERALDO</option>
+                        </select>
                 </div>
                 <div class="layui-inline layui-col-xs1">
                     <button class="layui-btn"  data-type="reload">搜索</button>
@@ -193,10 +194,8 @@
         layui.use('table', function(){
             var table = layui.table;
             //方法级渲染
-            
             table.render({
                 elem: '#LAY_table_user'
-                ,url:"{{route('index.search')}}"
                 ,cols: [[
                    {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
                     ,{field:'game_date', title: '比赛时间', width:120}
@@ -229,7 +228,7 @@
                 ,height: 550
             });
 
-            var $ = layui.$, active = {
+             var $ = layui.$, active = {
                 reload: function(){
                     var demoReload = $('#demoReload');
                     var demoReload1 = $('#demoReload1');
@@ -269,9 +268,9 @@
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';
             });
-        });
+        });         
     </script>
-    <script>
+     <script>
         layui.use('laydate', function(){
             var laydate = layui.laydate;
 
@@ -281,8 +280,8 @@
             });
         });
     </script>
-    <script>
-        layui.use('table', function(){
+     <script>
+          layui.use('table', function(){
             var table = layui.table;
 
             //监听工具条
@@ -306,8 +305,9 @@
 
             //监听提交
             form.on('submit(formDemo)', function(data){
-                // layer.msg(JSON.stringify(data.field));
-                // return false;
+                layer.msg(JSON.stringify(data.field));
+                // console.log(data.field);
+                return false;
             });
         });
         $(document).ready(function(){
@@ -316,10 +316,10 @@
 
             });
         });
+        //重置监听
         $('.reloadData').on('click',function () {
             layui.table.render({
                 elem: '#LAY_table_user'
-                // url:"{{route('index.search')}}"
                 ,cols: [[
                     {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
                     ,{field:'game_date', title: '比赛时间', width:120}
@@ -372,87 +372,4 @@
   </footer>
 
 </body>
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-//监听表格复选框选择
-        table.on('checkbox(user_one)', function(obj){
-
-        });
-        //方法级渲染
-        table.render({
-            elem: '#table_user'
-            // ,url: "{{route('index.search')}}"
-            ,cols: [[
-                {checkbox: true, fixed: true}
-                ,{field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
-                ,{field:'game_date', title: '比赛时间', width:120}
-                ,{field:'game_name', title: '比赛名称', width:100, sort: true}
-                ,{field:'game_project', title: '比赛项目', width:80}
-                ,{field:'game_stage', title: '比赛阶段', width:80}
-                ,{field:'user_a', title: '运动员A', sort: true, width:80}
-                ,{field:'user_b', title: '运动员B', sort: true, width:80}
-                ,{field:'big', title: '大比分', width:80}
-                ,{field:'small', title: '小比分', sort: true}
-
-            ]]
-            ,id: 'one'
-            ,page: true
-            ,height: 550
-        });
-
-        var $ = layui.$, active = {
-            reload: function(){
-                var demoReload = $('#sou_one');
-
-                //执行重载
-                table.reload('one', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        key: {
-                            id: demoReload.val()
-                        }
-                    }
-                });
-            },
-            getCheckData: function(){ //获取选中数据
-
-                var checkStatus = table.checkStatus('one')
-                    ,data = checkStatus.data;
-                if (data==''){
-                    layer.msg('没有选择用户',{icon:2})
-                    return false;
-                }
-                if (data[0].check=='false'){
-                    layer.msg('没有删选用户',{icon:2})
-                    return false;
-                }
-                var arr = [];
-                $.each(data,function (k,v) {
-                    arr.push(v.mess_id)
-                })
-                location.href ='/one_list_all.html?mess_id='+arr+'&user_id='+data[0].user_name_id
-
-            }
-            ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('one')
-                    ,data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-            }
-            ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('one');
-                layer.msg(checkStatus.isAll ? '全选': '未全选')
-            }
-        };
-
-
-
-        $('.demoTable1 .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-        });
-    });
-</script>
 </html>
