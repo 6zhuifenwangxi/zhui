@@ -757,12 +757,17 @@
         };
         $('.zhong').click(function(){
             $.get("{{route('session')}}","lang=chinese",function(data){
-            location.href="{{route('home.list')}}"
+                if(data==0){  
+                    location.href='';
+                }
+            
             })
         })
         $('.english').click(function(){
             $.get("{{route('session')}}","lang=english",function(data){
-            location.href="{{route('home.list')}}"
+                if(data==0){
+                    location.href='';
+                }
             })
         })
 </script>
