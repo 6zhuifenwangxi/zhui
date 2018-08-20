@@ -10,5 +10,6 @@ class SessionController extends Controller
     public function index(Request $request){
         $lang =Input::get('lang');
         $request->session()->put("lang",$lang);
+        echo 0;
     }
 }
