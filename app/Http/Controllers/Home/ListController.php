@@ -11,8 +11,8 @@ use DB;
 class ListController extends Controller
 {
     public function list(Request $request){
-        // $mess_id=Input::get('mess_id');
-        $mess_id=15;
+        $mess_id=Input::get('mess_id');
+        // $mess_id=15;
         if(!$request->session()->has('lang')){
             $lang ='chinese';
             $y='chinese';
