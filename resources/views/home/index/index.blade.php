@@ -198,7 +198,7 @@
                 elem: '#LAY_table_user'
                 ,url:"{{route('index.search')}}"
                 ,cols: [[
-                   {field:'id_sort', title: '序号', width:80, sort: true, fixed: true}
+                   {field:'id', title: '序号', width:80, sort: true, fixed: true}
                     ,{field:'game_date', title: '比赛时间', width:120}
                     ,{field:'game_name', title: '比赛名称', width:100, sort: true}
                     ,{field:'game_project', title: '比赛项目', width:80}
@@ -209,23 +209,9 @@
                     ,{field:'small', title: '小比分', sort: true}
                     ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
                 ]]
-                ,data: [
-                    @foreach($result as $val)
-                    {
-                        'id_sort':"{{$val->id}}",
-                        'game_date':"{{$val->game_date}}",
-                        'game_name':"{{$val->game_name}}",
-                        'game_project':"{{$val->game_project}}",
-                        'game_stage':"{{$val->game_stage}}",
-                        'user_a':"{{$val->user_name}}",
-                        'user_b':"{{$val->user_name_b}}",
-                        'big':"{{$val->big}}",
-                        'small':"{{$val->small}}",
-                    },
-                    @endforeach
-                ]   
+               
                 ,id: 'testReload'
-                ,page: true
+                // ,page: true
                 ,height: 550
             });
 
@@ -288,9 +274,9 @@
             //监听工具条
             table.on('tool(user)', function(obj){
                 var data = obj.data;
-
+                console.log(data.id);
                 if(obj.event === 'detail'){
-                    location.href = '/index_list.html'+'?mess_id='+data.mess_id
+                    location.href = '{{route("home.list")}}'+'?mess_id='+data.id;
                 } else if(obj.event === 'del'){
                     layer.confirm('真的删除行么', function(index){
                         obj.del();
@@ -306,8 +292,8 @@
 
             //监听提交
             form.on('submit(formDemo)', function(data){
-                // layer.msg(JSON.stringify(data.field));
-                // return false;
+                layer.msg(JSON.stringify(data.field));
+                return false;
             });
         });
         $(document).ready(function(){
@@ -332,23 +318,9 @@
                     ,{field:'small', title: '小比分', sort: true}
                     ,{fixed: 'right', width:78, align:'center', toolbar: '#barDemo'}
                 ]]
-                ,data: [
-                    @foreach($result as $val)
-                    {
-                        'id_sort':"{{$val->id}}",
-                        'game_date':"{{$val->game_date}}",
-                        'game_name':"{{$val->game_name}}",
-                        'game_project':"{{$val->game_project}}",
-                        'game_stage':"{{$val->game_stage}}",
-                        'user_a':"{{$val->user_name}}",
-                        'user_b':"{{$val->user_name_b}}",
-                        'big':"{{$val->big}}",
-                        'small':"{{$val->small}}",
-                    },
-                    @endforeach
-                ]   
+                 
                 ,id: 'testReload'
-                ,page: true
+                // ,page: true
                 ,height: 500
             });
         })
@@ -433,7 +405,7 @@
                 $.each(data,function (k,v) {
                     arr.push(v.mess_id)
                 })
-                location.href ='/one_list_all.html?mess_id='+arr+'&user_id='+data[0].user_name_id
+                location.href ='{{route("home.list")}}?mess_id='+arr+'&user_id='+data[0].user_name_id
 
             }
             ,getCheckLength: function(){ //获取选中数目
