@@ -27,6 +27,8 @@
                     </a>
                 </div>
             </div>
+            <button class="layui-btn layui-btn-danger zhong">中文</button>
+            <button class="layui-btn english">English</button>
             <!--<div class="layui-col-xs4 nav_lag">
                 <div class="layui-inline">
                     <div class="layui-input-inline">
@@ -66,11 +68,11 @@
                                 <table class="layui-table">
                                     <thead>
                                     <tr>
-                                        <th style="font-size: 20px;text-align: center">失分</th>
-                                        <th style="font-size: 20px;text-align: center">得分</th>
-                                        <th style="font-size: 20px;text-align: center">指标</th>
-                                        <th style="font-size: 20px;text-align: center">得分</th>
-                                        <th style="font-size: 20px;text-align: center">失分</th>
+                                    <th style="font-size: 20px;text-align: center">{{$L_pack[1]}}</th>
+                                        <th style="font-size: 20px;text-align: center">{{$L_pack[0]}}</th>
+                                    <th style="font-size: 20px;text-align: center">{{$L_pack[54]}}</th>
+                                        <th style="font-size: 20px;text-align: center">{{$L_pack[0]}}</th>
+                                        <th style="font-size: 20px;text-align: center">{{$L_pack[1]}}</th>
 
                                     </tr>
                                     </thead>
@@ -154,8 +156,7 @@
                                 <button class="layui-btn" id="submitButton" lay-submit lay-filter="formDemo">立即提交</button>
                             </div>
                         </div>
-                        <input type="hidden" name="user_id" value="23">
-                        <input type="hidden" name="mess_id" value="16">
+                    <input type="hidden" name="mess_id" value="{{$mess_id}}">
                     </form>
 
                     <div class="layui-col-xs6" style="width: 100%">
@@ -170,7 +171,7 @@
          <p>XXXXX有限公司</p>
   </footer>
    <script src="/home/js/echarts.simple.min.js"></script>
-   <script src="/home/js/jquery.js"></script>
+   <script src="/home/js/jquery-3.3.1.js"></script>
    <script src="/home/js/layui.all.js"></script>
 
 </body>
@@ -681,14 +682,48 @@
             form.on('submit(formDemo)', function(data1){
 
 
-                $.get('{{route('list.find')}}'+'?class='+data1.field.class+'&mess_id='+data1.field.mess_id+'&user_id='+data1.field.user_id).done(function (data) {
-                    // 填入数据
-                    if (data.code==100){layer.msg(data.msg,{icon:2});return false;}
-                    my5.setOption({
+                // $.get('{{route('list.find')}}'+'?class='+data1.field.class+'&mess_id='+data1.field.mess_id+'&user_id='+data1.field.user_id).done(function (data) {
+                //     // 填入数据
+                //     if (data.code==100){layer.msg(data.msg,{icon:2});return false;}
+                //     my5.setOption({
+                //         xAxis: {
+                //             type: 'category',
+                //             boundaryGap: true,
+                //             data:data.c
+                //         },
+                //         yAxis: {
+                //             type: 'category',
+
+
+                //         },
+                //         series: [
+                //             {
+                //                 name:'樊振东',
+                //                 type:'line',
+                //                 stack: '总量',
+                //                 data:data.a
+                //             },
+                //             {
+                //                 name:'JoaoGERALDO',
+                //                 type:'line',
+                //                 stack: '总量',
+                //                 data:data.b
+                //             }
+                //         ]
+                //     });
+                // });
+                var url = window.location.search;
+                
+                $.get("{{route('list.find')}}","class="+data1.field.class+"&mess_id="+data1.field.mess_id,function(data){
+                    // console.log(data);
+                    if(data[0]=="此局无数据"){
+                        alert("此局无数据");
+                    }else{
+                        my5.setOption({
                         xAxis: {
                             type: 'category',
                             boundaryGap: true,
-                            data:data.c
+                            data:data[2]
                         },
                         yAxis: {
                             type: 'category',
@@ -697,21 +732,21 @@
                         },
                         series: [
                             {
-                                name:'樊振东',
+                            name:'{{$user_aname}}',
                                 type:'line',
                                 stack: '总量',
-                                data:data.a
+                                data:data[0]
                             },
                             {
-                                name:'JoaoGERALDO',
+                            name:'{{$user_bname}}',
                                 type:'line',
                                 stack: '总量',
-                                data:data.b
+                                data:data[1]
                             }
                         ]
                     });
-                });
-
+                    }
+                },'json')
 
             });
         });
@@ -720,6 +755,16 @@
             // your code here...
             return false;
         };
+        $('.zhong').click(function(){
+            $.get("{{route('session')}}","lang=chinese",function(data){
+            location.href="{{route('home.list')}}"
+            })
+        })
+        $('.english').click(function(){
+            $.get("{{route('session')}}","lang=english",function(data){
+            location.href="{{route('home.list')}}"
+            })
+        })
 </script>
 
 </html>
