@@ -23,11 +23,7 @@ class IndexController extends Controller
         for($i = 0; $i<count($result); $i++){
             $result[$i]->user_name_b = $result2[$i]->user_name;
         }
-        //         dump(count($result));
-        //         dump($result);
-        //         // dump($result2);
-        //         die;
-        // $result3 = json_encode(['code'=>0,'msg'=>'','data'=>$result]);
+      json_encode(['code'=>0,'msg'=>'','data'=>$result]);
         return view('home.index.index');
     }
 
