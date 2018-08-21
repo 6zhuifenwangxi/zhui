@@ -51,5 +51,6 @@ Route::group(['prefix' => 'home','namespace' =>'home'], function () {
     //详情页
     Route::get('list/list','ListController@list')->name('home.list');
     Route::get('list/find','ListController@find')->name('list.find');
+    Route::get('list/redis','ListController@redis')->name('redis');
     Route::get('session/index','SessionController@index')->name('session');
  });

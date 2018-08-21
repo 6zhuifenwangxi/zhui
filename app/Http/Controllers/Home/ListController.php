@@ -8,8 +8,18 @@ use Input;
 use App\Model\Game_data;
 use App\Model\Message;
 use DB;
+use Illuminate\Support\Facades\Redis;
 class ListController extends Controller
 {
+    //public function redis(){
+        // Redis::connection('127.0.0.1',6379);
+        // Redis::auth('zfwx');
+       //$user = Redis::get('name');
+    //    $redis = Redis::connection('192.168.114.37');
+    //    $redis->auth('zfwx');
+    //    $user=$redis->get('name');
+      // dump($user);   
+   // }
     public function list(Request $request){
         $mess_id=Input::get('mess_id');
         // $mess_id=15;
@@ -24,8 +34,26 @@ class ListController extends Controller
             $y='chinese';
         }
         //取出字典数据
-        $words =DB::table('dic')->select($lang)->get()->toArray();
+        if($y=='chinese'){
+                $words=Redis::get('words');
+            if(!$words){
+                $words = DB::table('dic')->select($lang)->get()->toArray();
+                $words=json_encode($words);
+                Redis::set('words',$words);
+            }
+        }else{
+                $words=Redis::get('words_english');
+            if(!$words){
+                $words = DB::table('dic')->select($lang)->get()->toArray();
+                $words=json_encode($words);
+                Redis::set('words_english',$words);
+            }
+        }
+        $words=json_decode($words);
+        //$words=DB::table('dic')->select($lang)->get()->toArray();
         // dump($y);
+        // dump($words);
+        // die;
         // dump($words);
         // die;
         $user_a=Message::where('id',$mess_id)->get()->first()->user_a;
