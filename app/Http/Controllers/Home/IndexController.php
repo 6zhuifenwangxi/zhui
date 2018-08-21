@@ -12,17 +12,17 @@ use Input;
 class IndexController extends Controller
 {
     public function index(){
-        $result = DB::table('message')
-                    ->join('count_score','message.id',"=",'count_score.mess_id')
-                    ->join('user','message.user_a',"=",'user.id')
-                    ->get()->toArray();
-        $result2 = DB::table('message')
-                    ->join('count_score','message.id',"=",'count_score.mess_id')
-                    ->join('user','message.user_b',"=",'user.id')
-                    ->get()->toArray();
-        for($i = 0; $i<count($result); $i++){
-            $result[$i]->user_name_b = $result2[$i]->user_name;
-        }
+        // $result = DB::table('message')
+        //             ->join('count_score','message.id',"=",'count_score.mess_id')
+        //             ->join('user','message.user_a',"=",'user.id')
+        //             ->get()->toArray();
+        // $result2 = DB::table('message')
+        //             ->join('count_score','message.id',"=",'count_score.mess_id')
+        //             ->join('user','message.user_b',"=",'user.id')
+        //             ->get()->toArray();
+        // for($i = 0; $i<count($result); $i++){
+        //     $result[$i]->user_name_b = $result2[$i]->user_name;
+        // }
         //         dump(count($result));
         //         dump($result);
         //         // dump($result2);
@@ -50,7 +50,9 @@ class IndexController extends Controller
             // die;
             return ['code'=>0,'msg'=>'','data'=>$result];
         }
-        $data = Input::all()['key'];      
+        $data = Input::all()['key'];
+        // dump($data);
+        // die;     
         $a = ['game_date','game_name','city','user_id','user_id2','hand','play','bat','game_stage','game_project'];
         for($i = 0; $i<=9; $i++){
             if($data[$a[$i]] == null){
