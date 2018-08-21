@@ -12,7 +12,7 @@ class AchievementController extends Controller
 {
     //
     public function index(){
-        $date =Count_score::get();
+        $date =Count_score::get();8
         $game =Message::get();
         $id_c =array();
         foreach ($date as $key => $value) {
